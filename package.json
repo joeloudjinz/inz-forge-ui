@@ -4,9 +4,12 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
-    "@nx/js": "22.3.3",
+    "@nx/angular": "^22.3.3",
+    "@nx/cypress": "^22.3.3",
+    "@nx/js": "^22.3.3",
+    "@nx/playwright": "^22.3.3",
+    "@nx/vue": "^22.3.3",
     "@nx/workspace": "22.3.3",
     "nx": "22.3.3"
   }
