@@ -1,96 +1,108 @@
-# InzForgeUi
+# InzForge UI
+**A Source-First, Multi-Framework Blueprint Registry**
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Welcome to InzForge, a personal engineering lab and component registry dedicated to high-performance, standalone UI components.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+InzForge is not a traditional component library delivered via NPM. Instead, it is a Blueprint Registry (inspired by Shadcn/UI) where components are distributed as raw source code. This approach ensures maximum portability, zero-dependency bloat, and full developer ownership.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+---
 
-## Run tasks
+## Vision
+The goal of InzForge is to bridge the gap between high-end design and modern frontend engineering. Every component is built twice—once for Angular and once for Vue—to master the nuances of state management, reactivity, and cross-browser stability.
 
-To run tasks with Nx use:
+- **Source-First:** Copy the code, own the logic, customize everything.
+- **Modern Reactivity:** Built with Angular 18+ (Signals) and Vue 3 (Composition API).
+- **Standalone Architecture:** Every component is an isolated unit, ready to be integrated into any project.
+- **Engineering Excellence:** Dual-layer testing with Cypress and Playwright ensures production-grade reliability.
 
-```sh
-npx nx <target> <project-name>
+---
+
+## Technical Stack
+*   **Monorepo:** Nx
+*   **Framework A:** Angular 18+ (Standalone Components, Signals)
+*   **Framework B:** Vue 3 (Vite, script setup, Composition API)
+*   **Styling:** TailwindCSS (with centralized Design Tokens)
+*   **Testing:**
+    *   **Cypress:** Component Testing (Local/Interactive)
+    *   **Playwright:** E2E Cross-browser Testing (Safari, Firefox, Chrome)
+
+---
+
+## Repository Structure
+InzForge follows a modular "One Library per Component" strategy:
+
+```text
+inzforge/
+├── apps/
+│   ├── angular-inzforge      # Angular Showcase Gallery
+│   └── vue-inzforge          # Vue Showcase Gallery
+├── libs/
+│   ├── shared/utils          # Shared logic (Tailwind merge, etc.)
+│   ├── angular/ui/           # Isolated Angular Blueprints
+│   │   └── button/           # Self-contained button library
+│   └── vue/ui/               # Isolated Vue Blueprints
+│       └── button/           # Self-contained button library
+├── tailwind.config.base.js    # Centralized Design Tokens
+└── PROJECT_CONTEXT.md        # AI-Agent Engineering Rules
 ```
 
-For example:
+---
 
-```sh
-npx nx build myproject
+## Getting Started
+
+### 1. Clone the Repo
+```bash
+git clone https://github.com/joeinz/inzforge.git
+cd inzforge
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
-```sh
-npx nx add @nx/react
+### 2. Install Dependencies
+```bash
+npm install
 ```
 
-Use the plugin's generator to create new projects. For example, to create a new React app or library:
+### 3. Run the Showcases
+To see the components in action:
+```bash
+# Start Angular Showcase
+npx nx serve angular-inzforge
 
-```sh
-# Generate an app
-npx nx g @nx/react:app demo
-
-# Generate a library
-npx nx g @nx/react:lib some-lib
+# Start Vue Showcase
+npx nx serve vue-inzforge
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+---
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Testing Strategy
+InzForge maintains a strict testing mandate for every component.
 
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
+**Cypress (Component Testing):**
+```bash
+npx nx component-test [component-name]
 ```
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
+**Playwright (E2E Cross-browser):**
+```bash
+npx nx e2e [showcase-app-name]
 ```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
 
-## Install Nx Console
+## Roadmap
+- [ ] Initialize Workspace and Shared Utils
+- [ ] inz-button (Angular and Vue)
+- [ ] inz-input (Angular and Vue)
+- [ ] inz-card (Angular and Vue)
+- [ ] Experimental CLI for source-code injection
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+---
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Author
+**Joeinz**
+- GitHub: [@joeinz](https://github.com/joeinz)
 
-## Useful links
+## License
+This project is [MIT](./LICENSE) licensed. You are free to copy, modify, and use the blueprints in your own projects.
 
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
+Generated by the InzForge Engineering Lab.
