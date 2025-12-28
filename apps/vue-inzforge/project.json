@@ -1,0 +1,8 @@
+{
+  "name": "vue-inzforge",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/vue-inzforge/src",
+  "// targets": "to see all targets run: nx show project vue-inzforge --web",
+  "targets": {}
+}
