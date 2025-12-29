@@ -4,10 +4,9 @@ import {Component, input} from "@angular/core";
   selector: "inz-app-page-headline",
   standalone: true,
   template: `
-    <!--  TODO add styling  -->
-    <h1>{{ title() || "UNSPECIFIED HEADLINE TITLE" }}</h1>
+    <h1 class="text-3xl font-bold mb-3">{{ title() || "UNSPECIFIED HEADLINE TITLE" }}</h1>
     @if (!!subtitle()) {
-      <h3>{{ subtitle() }}</h3>
+      <h3 class="text-md font-light text-gray-600 mt-1 mb-3">{{ subtitle() }}</h3>
     }
   `
 })

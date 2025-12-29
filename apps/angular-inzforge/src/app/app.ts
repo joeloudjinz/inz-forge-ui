@@ -5,9 +5,8 @@ import { SidebarComponent } from './shared/components/app-sidebare/sidebar.compo
 @Component({
   imports: [RouterModule, SidebarComponent],
   selector: 'app-root',
-  templateUrl: './app.html',
-  styleUrl: './app.css',
+  templateUrl: './app.html'
 })
 export class App {
-  protected title = 'angular-inzforge';
+  protected title = 'InzForge UI - Angular Showroom';
 }

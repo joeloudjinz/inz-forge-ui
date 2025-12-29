@@ -1,28 +1,30 @@
-<div class="sidebar-container">
-  <div class="sidebar-content">
-    <h3 class="sidebar-title">InzForge UI</h3>
-    <ul class="menu-list">
+<div class="fixed top-0 bottom-0 left-0 z-20 w-64 bg-white border-r border-gray-200">
+  <div class="h-full overflow-y-auto pt-4 px-6">
+    <h3 class="text-lg font-semibold text-gray-800 mb-4">InzForge UI</h3>
+    <ul class="list-none p-0 m-0 flex flex-col space-y-1">
       @for (item of menuItems(); track item.path) {
         <li>
           <a
-            class="menu-item"
+            class="flex items-center w-full py-2 px-3 text-base font-medium text-gray-700 rounded-lg transition-colors duration-200 hover:bg-gray-100"
             [routerLink]="item.path"
-            routerLinkActive="active"
-            [class.menu-item-active]="isActive(item.path)">
-            <span class="menu-item-text">{{ item.label }}</span>
+            routerLinkActive="bg-blue-50 text-blue-600"
+            [class.bg-blue-50]="isActive(item.path)"
+            [class.text-blue-600]="isActive(item.path)">
+            <span class="whitespace-nowrap overflow-hidden text-ellipsis">{{ item.label }}</span>
           </a>
 
           <!-- Render child items if they exist -->
           @if (item.children && item.children.length > 0) {
-            <ul class="submenu-list">
+            <ul class="list-none p-0 m-0 pt-2 flex flex-col space-y-1 ml-4 border-t border-gray-100">
               @for (child of item.children; track child.path) {
                 <li>
                   <a
-                    class="submenu-item"
+                    class="flex items-center w-full py-2 px-3 text-sm font-medium text-gray-600 rounded-lg transition-colors duration-200 hover:bg-gray-100"
                     [routerLink]="child.path"
-                    routerLinkActive="active"
-                    [class.submenu-item-active]="isActive(child.path)">
-                    <span class="submenu-item-text">{{ child.label }}</span>
+                    routerLinkActive="bg-blue-50 text-blue-600"
+                    [class.bg-blue-50]="isActive(child.path)"
+                    [class.text-blue-600]="isActive(child.path)">
+                    <span class="whitespace-nowrap overflow-hidden text-ellipsis">{{ child.label }}</span>
                   </a>
                 </li>
               }

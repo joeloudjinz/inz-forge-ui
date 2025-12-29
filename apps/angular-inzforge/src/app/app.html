@@ -1,17 +1,17 @@
-<div class="app-container">
+<div class="flex h-screen bg-gray-50">
   <app-sidebar></app-sidebar>
 
   <!-- Main content -->
-  <main class="app-main">
-    <div class="app-header-border">
-      <div class="app-content-wrapper">
-        <div class="app-header-content">
-          <h1 class="app-title">InzForge UI</h1>
-          <div class="app-subtitle">by Abdellah Addoun (JeoInz)</div>
+  <main class="flex-1 ml-64 bg-white min-h-screen">
+    <div class="shadow-lg shadow-gray-400-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <h1 class="text-2xl font-bold text-gray-900">InzForge UI</h1>
+          <div class="text-sm text-gray-500">by Abdellah ADDOUN <span class="italic">(JeoInz)</span></div>
         </div>
       </div>
     </div>
-    <div class="app-content-wrapper app-content-padding">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <router-outlet></router-outlet>
     </div>
   </main>
