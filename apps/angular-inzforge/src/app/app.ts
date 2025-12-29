@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SidebarComponent } from './shared/components/sidebar.component';
+import { SidebarComponent } from './shared/components/app-sidebare/sidebar.component';
 
 @Component({
   imports: [RouterModule, SidebarComponent],
