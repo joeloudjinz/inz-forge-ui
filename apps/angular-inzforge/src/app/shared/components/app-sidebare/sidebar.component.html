@@ -1,39 +1,35 @@
-<nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-  <div class="position-sticky pt-3">
-    <div class="sidebar-sticky">
-      <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1">
-        Content
-      </h3>
-      <ul class="nav flex-column">
-        @for (item of menuItems(); track item.path) {
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [routerLink]="item.path"
-              routerLinkActive="active"
-              [class.active]="isActive(item.path)">
-              {{ item.label }}
-            </a>
+<div class="sidebar-container">
+  <div class="sidebar-content">
+    <h3 class="sidebar-title">InzForge UI</h3>
+    <ul class="menu-list">
+      @for (item of menuItems(); track item.path) {
+        <li>
+          <a
+            class="menu-item"
+            [routerLink]="item.path"
+            routerLinkActive="active"
+            [class.menu-item-active]="isActive(item.path)">
+            <span class="menu-item-text">{{ item.label }}</span>
+          </a>
 
-            <!-- Render child items if they exist -->
-            @if (item.children && item.children.length > 0) {
-              <ul class="nav flex-column ms-3">
-                @for (child of item.children; track child.path) {
-                  <li class="nav-item">
-                    <a
-                      class="nav-link ps-4"
-                      [routerLink]="child.path"
-                      routerLinkActive="active"
-                      [class.active]="isActive(child.path)">
-                      {{ child.label }}
-                    </a>
-                  </li>
-                }
-              </ul>
-            }
-          </li>
-        }
-      </ul>
-    </div>
+          <!-- Render child items if they exist -->
+          @if (item.children && item.children.length > 0) {
+            <ul class="submenu-list">
+              @for (child of item.children; track child.path) {
+                <li>
+                  <a
+                    class="submenu-item"
+                    [routerLink]="child.path"
+                    routerLinkActive="active"
+                    [class.submenu-item-active]="isActive(child.path)">
+                    <span class="submenu-item-text">{{ child.label }}</span>
+                  </a>
+                </li>
+              }
+            </ul>
+          }
+        </li>
+      }
+    </ul>
   </div>
-</nav>
+</div>

@@ -1,3 +1,67 @@
+/* App container styling */
+.app-container {
+  display: flex;
+  height: 100vh; /* h-screen */
+  background-color: #f9fafb; /* bg-gray-50 */
+}
+
+.app-main {
+  flex: 1; /* flex-1 */
+  margin-left: 16rem; /* ml-64 (64 * 0.25rem = 16rem) */
+  background-color: white; /* bg-white */
+  min-height: 100vh; /* min-h-screen */
+}
+
+.app-header-border {
+  border-bottom: 1px solid #e5e7eb; /* border-b border-gray-200 */
+}
+
+.app-content-wrapper {
+  max-width: 89.6rem; /* max-w-7xl */
+  margin-left: auto; /* mx-auto */
+  margin-right: auto; /* mx-auto */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+}
+
+@media (min-width: 640px) {
+  .app-content-wrapper {
+    padding-left: 1.5rem; /* sm:px-6 */
+    padding-right: 1.5rem; /* sm:px-6 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-content-wrapper {
+    padding-left: 2rem; /* lg:px-8 */
+    padding-right: 2rem; /* lg:px-8 */
+  }
+}
+
+.app-header-content {
+  display: flex; /* flex */
+  justify-content: space-between; /* justify-between */
+  align-items: center; /* items-center */
+  padding-top: 1rem; /* py-4 */
+  padding-bottom: 1rem; /* py-4 */
+}
+
+.app-title {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
+  color: #1f2937; /* text-gray-900 */
+}
+
+.app-subtitle {
+  font-size: 0.875rem; /* text-sm */
+  color: #6b7280; /* text-gray-500 */
+}
+
+.app-content-padding {
+  padding-top: 2rem; /* py-8 */
+  padding-bottom: 2rem; /* py-8 */
+}
+
 /* Sidebar styling */
 .sidebar {
   position: fixed;
@@ -47,4 +111,40 @@
 /* Main content */
 [role="main"] {
   padding-top: 48px; /* Space for fixed navbar */
+}
+
+/* Home component styles */
+.home-title {
+  font-weight: 700; /* font-bold */
+  font-size: 1.5rem; /* text-2xl */
+}
+
+@media (min-width: 768px) {
+  .home-title {
+    font-size: 1.875rem; /* md:text-3xl */
+  }
+}
+
+.home-subtitle {
+  color: #3b82f6; /* text-blue-600 */
+  font-weight: 700; /* font-bold */
+  font-size: 1.125rem; /* text-lg */
+}
+
+@media (min-width: 768px) {
+  .home-subtitle {
+    font-size: 1.25rem; /* md:text-xl */
+  }
+}
+
+.home-paragraph {
+  margin-top: 1rem; /* mt-4 for first, mt-2 for second */
+}
+
+.home-paragraph:nth-child(3) {
+  margin-top: 0.5rem; /* mt-2 */
+}
+
+.home-paragraph:nth-child(5) {
+  margin-top: 1rem; /* mt-4 */
 }

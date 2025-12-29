@@ -8,7 +8,7 @@
   @if (mode() === InzForgeHyperUiAccordionModes.divided) {
     <div class="inz-accordion-container-divided" [class.inz-accordion-container-divided-dark]="isDark()">
       @for (item of items(); track item) {
-        <details class="inz-accordion-item" [attr.open]="item.isExpandedByDefault ? '' : null">
+        <details class="inz-accordion-item group" [attr.open]="item.isExpandedByDefault ? '' : null">
           <summary
             [attr.dir]="isRTL() ? 'rtl' : 'ltr'"
             [class.inz-accordion-summary-divided]="true"
@@ -50,7 +50,7 @@
     <div [class.inz-accordion-container-compact]="true" [class.space-y-1]="!isDark()"
          [class]="isDark() ? 'space-y-1 dark:divide-gray-700' : 'space-y-1'">
       @for (item of items(); track item) {
-        <details class="inz-accordion-item" [attr.open]="item.isExpandedByDefault ? '' : null">
+        <details class="inz-accordion-item group" [attr.open]="item.isExpandedByDefault ? '' : null">
           <summary
             [attr.dir]="isRTL() ? 'rtl' : 'ltr'"
             [class.inz-accordion-summary-compact]="true"
@@ -93,7 +93,7 @@
     <div [class.inz-accordion-container]="true" [class.space-y-2]="!isDark()"
          [class]="isDark() ? 'space-y-2' : 'space-y-2'">
       @for (item of items(); track item) {
-        <details class="inz-accordion-item" [attr.open]="item.isExpandedByDefault ? '' : null">
+        <details class="inz-accordion-item group" [attr.open]="item.isExpandedByDefault ? '' : null">
           <summary
             [attr.dir]="isRTL() ? 'rtl' : 'ltr'"
             [class.inz-accordion-summary]="true"

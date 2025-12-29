@@ -4,6 +4,10 @@
   Source: https://www.hyperui.dev/components/application/accordions
 */
 
+/* Reference the core and your shared theme CSS */
+@reference "tailwindcss";
+@reference "../../../../shared/utils/src/lib/theme.css";
+
 /* Base accordion styles */
 .inz-accordion-container {
   @apply space-y-2;
@@ -21,8 +25,8 @@
   @apply space-y-1;
 }
 
-.inz-accordion-item {
-  @apply group [&_summary::-webkit-details-marker]:hidden;
+.inz-accordion-item summary::-webkit-details-marker {
+  display: none;
 }
 
 .inz-accordion-summary {
@@ -66,7 +70,11 @@
 }
 
 .inz-accordion-chevron {
-  @apply size-5 shrink-0 transition-transform duration-300 group-open:-rotate-180;
+  @apply size-5 shrink-0 transition-transform duration-300;
+}
+
+.group[open] .inz-accordion-chevron {
+  @apply -rotate-180;
 }
 
 /* RTL support */

@@ -1,16 +1,18 @@
-<div class="container-fluid">
-  <div class="row">
-    <app-sidebar></app-sidebar>
+<div class="app-container">
+  <app-sidebar></app-sidebar>
 
-    <!-- Main content -->
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="fw-bolder">InzForge UI <span class="h4 fw-light">by Abdellah Addoun (JeoInz)</span></h1>
+  <!-- Main content -->
+  <main class="app-main">
+    <div class="app-header-border">
+      <div class="app-content-wrapper">
+        <div class="app-header-content">
+          <h1 class="app-title">InzForge UI</h1>
+          <div class="app-subtitle">by Abdellah Addoun (JeoInz)</div>
+        </div>
       </div>
-      <div class="container mt-4">
-        <router-outlet></router-outlet>
-      </div>
-    </main>
-  </div>
+    </div>
+    <div class="app-content-wrapper app-content-padding">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 </div>

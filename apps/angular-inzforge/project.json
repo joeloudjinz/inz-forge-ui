@@ -21,7 +21,6 @@
           }
         ],
         "styles": [
-          "node_modules/bootstrap/dist/css/bootstrap.min.css",
           "apps/angular-inzforge/src/styles.css"
         ]
       },
