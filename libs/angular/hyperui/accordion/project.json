@@ -2,7 +2,7 @@
   "name": "accordion",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/angular/hyperui/accordion/src",
-  "prefix": "lib",
+  "prefix": "inz",
   "projectType": "library",
   "tags": [],
   "targets": {

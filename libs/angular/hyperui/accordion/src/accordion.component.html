@@ -1,0 +1,135 @@
+<!--
+  INZFORGE BLUEPRINT: HYPERUI ACCORDIONS
+  Source: https://www.hyperui.dev/components/application/accordions
+  Variants: Simple, Divided, Compact
+-->
+
+@if (items().length > 0) {
+  @if (mode() === InzForgeHyperUiAccordionModes.divided) {
+    <div class="inz-accordion-container-divided" [class.inz-accordion-container-divided-dark]="isDark()">
+      @for (item of items(); track item) {
+        <details class="inz-accordion-item" [attr.open]="item.isExpandedByDefault ? '' : null">
+          <summary
+            [attr.dir]="isRTL() ? 'rtl' : 'ltr'"
+            [class.inz-accordion-summary-divided]="true"
+            [class.inz-accordion-summary-divided-dark]="isDark()"
+            tabindex="0"
+            role="button"
+            [attr.aria-expanded]="item.isExpandedByDefault ? 'true' : 'false'"
+            [attr.aria-controls]="'accordion-content-' + $index">
+            @if (item.iconClass || item.iconComponent) {
+              <span class="flex items-center gap-2">
+                @if (item.iconClass) {
+                  <i [class]="item.iconClass" class="inz-accordion-icon"></i>
+                }
+                @if (item.iconComponent) {
+                  <span [innerHTML]="item.iconComponent"></span>
+                }
+                <span>{{ item.title }}</span>
+              </span>
+            } @else {
+              <span>{{ item.title }}</span>
+            }
+
+            <svg class="inz-accordion-chevron"
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            </svg>
+          </summary>
+
+          <div
+            [class.inz-accordion-content]="true"
+            [class.inz-accordion-content-dark]="isDark()"
+            [id]="'accordion-content-' + $index">
+            <p>{{ item.description }}</p>
+          </div>
+        </details>
+      }
+    </div>
+  } @else if (mode() === InzForgeHyperUiAccordionModes.compact) {
+    <div [class.inz-accordion-container-compact]="true" [class.space-y-1]="!isDark()"
+         [class]="isDark() ? 'space-y-1 dark:divide-gray-700' : 'space-y-1'">
+      @for (item of items(); track item) {
+        <details class="inz-accordion-item" [attr.open]="item.isExpandedByDefault ? '' : null">
+          <summary
+            [attr.dir]="isRTL() ? 'rtl' : 'ltr'"
+            [class.inz-accordion-summary-compact]="true"
+            [class.inz-accordion-summary-compact-dark]="isDark()"
+            tabindex="0"
+            role="button"
+            [attr.aria-expanded]="item.isExpandedByDefault ? 'true' : 'false'"
+            [attr.aria-controls]="'accordion-content-' + $index">
+            @if (item.iconClass || item.iconComponent) {
+              <span class="flex items-center gap-2">
+                @if (item.iconClass) {
+                  <i [class]="item.iconClass" class="inz-accordion-icon"></i>
+                }
+                @if (item.iconComponent) {
+                  <span [innerHTML]="item.iconComponent"></span>
+                }
+                <span>{{ item.title }}</span>
+              </span>
+            } @else {
+              <span>{{ item.title }}</span>
+            }
+
+            <svg class="inz-accordion-chevron"
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            </svg>
+          </summary>
+
+          <div
+            class="inz-accordion-content inz-accordion-content-compact"
+            [class.inz-accordion-content-dark]="isDark()"
+            [id]="'accordion-content-' + $index">
+            <p>{{ item.description }}</p>
+          </div>
+        </details>
+      }
+    </div>
+  } @else {
+    <!-- Simple mode -->
+    <div [class.inz-accordion-container]="true" [class.space-y-2]="!isDark()"
+         [class]="isDark() ? 'space-y-2' : 'space-y-2'">
+      @for (item of items(); track item) {
+        <details class="inz-accordion-item" [attr.open]="item.isExpandedByDefault ? '' : null">
+          <summary
+            [attr.dir]="isRTL() ? 'rtl' : 'ltr'"
+            [class.inz-accordion-summary]="true"
+            [class.inz-accordion-summary-simple-dark]="isDark()"
+            tabindex="0"
+            role="button"
+            [attr.aria-expanded]="item.isExpandedByDefault ? 'true' : 'false'"
+            [attr.aria-controls]="'accordion-content-' + $index">
+            @if (item.iconClass || item.iconComponent) {
+              <span class="flex items-center gap-2">
+                @if (item.iconClass) {
+                  <i [class]="item.iconClass" class="inz-accordion-icon"></i>
+                }
+                @if (item.iconComponent) {
+                  <span [innerHTML]="item.iconComponent"></span>
+                }
+                <span>{{ item.title }}</span>
+              </span>
+            } @else {
+              <span>{{ item.title }}</span>
+            }
+
+            <svg class="inz-accordion-chevron"
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            </svg>
+          </summary>
+
+          <div
+            class="inz-accordion-content"
+            [class.inz-accordion-content-dark]="isDark()"
+            [id]="'accordion-content-' + $index">
+            <p>{{ item.description }}</p>
+          </div>
+        </details>
+      }
+    </div>
+  }
+}
