@@ -1,6 +1,6 @@
 const {createGlobPatternsForDependencies} = require('@nx/angular/tailwind');
 const {join} = require('path');
-const baseConfig = require('../../tailwind.config.base.js'); // Adjust path based on app depth
+const baseConfig = require('../../tailwind.config.base.js');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

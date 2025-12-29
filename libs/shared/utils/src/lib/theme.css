@@ -1,10 +1,145 @@
 @theme {
-  --color-inz-primary: var(--inz-primary, #3b82f6);
-  --color-inz-secondary: var(--inz-secondary, #1e293b);
+  /*
+   * COLOR PALETTE
+   * Tailwind 4 maps --color-* to bg-*, text-*, border-*, etc.
+   * Using space-separated HSL for native CSS color-mix support.
+   */
+  --color-inz-primary: hsl(216 100% 50%);
+  --color-inz-primary-foreground: hsl(0 0% 100%);
+  --color-inz-secondary: hsl(24 100% 30%);
+  --color-inz-secondary-foreground: hsl(0 0% 100%);
+  --color-inz-accent: hsl(240 100% 50%);
+  --color-inz-accent-foreground: hsl(0 0% 100%);
+  --color-inz-destructive: hsl(0 75% 55%);
+  --color-inz-destructive-foreground: hsl(0 0% 100%);
+  --color-inz-muted: hsl(240 10% 94.9%);
+  --color-inz-muted-foreground: hsl(240 10% 60%);
+  --color-inz-background: hsl(0 0% 98%);
+  --color-inz-foreground: hsl(0 0% 20%);
+  --color-inz-border: hsl(240 10% 80%);
+  --color-inz-input: hsl(240 10% 80%);
+  --color-inz-ring: hsl(216 100% 50%);
 
-  --radius-inz-md: var(--inz-radius, 0.5rem);
+  /*
+   * BORDER RADIUS
+   * Maps to rounded-inz-sm, rounded-inz-md, etc.
+   */
+  --radius-inz-sm: 0.25rem;
+  --radius-inz-md: 0.5rem;
+  --radius-inz-lg: 0.75rem;
+  --radius-inz-xl: 1rem;
 
-  /* Add animations from tailwindcss-animate if needed */
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
+  /*
+   * SPACING SCALE
+   * Maps to p-inz-4, m-inz-4, gap-inz-4, etc.
+   */
+  --spacing-inz-0: 0rem;
+  --spacing-inz-1: 0.25rem;
+  --spacing-inz-2: 0.5rem;
+  --spacing-inz-3: 0.75rem;
+  --spacing-inz-4: 1rem;
+  --spacing-inz-5: 1.25rem;
+  --spacing-inz-6: 1.5rem;
+  --spacing-inz-8: 2rem;
+  --spacing-inz-10: 2.5rem;
+  --spacing-inz-12: 3rem;
+  --spacing-inz-16: 4rem;
+  --spacing-inz-20: 5rem;
+
+  /*
+ * TYPOGRAPHY NAMESPACE FIX
+ * In Tailwind 4:
+ * --text-* maps to font-size (text-inz-sm)
+ * --leading-* maps to line-height (leading-inz-tight)
+ */
+  --text-inz-xs: 0.75rem;
+  --text-inz-sm: 0.875rem;
+  --text-inz-base: 1rem;
+  --text-inz-lg: 1.125rem;
+  --text-inz-xl: 1.25rem;
+  --text-inz-2xl: 1.5rem;
+  --text-inz-3xl: 1.875rem;
+  --text-inz-4xl: 2.25rem;
+  --text-inz-5xl: 3rem;
+
+  --line-height-inz-tight: 1.25;
+  --line-height-inz-snug: 1.375;
+  --line-height-inz-normal: 1.5;
+  --line-height-inz-relaxed: 1.625;
+
+  /*
+   * SHADOWS
+   * Maps to shadow-inz-sm, shadow-inz-md, etc.
+   */
+  --shadow-inz-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-inz: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-inz-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-inz-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-inz-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /*
+   * Z-INDEX
+   * Maps to z-inz-modal, z-inz-tooltip, etc.
+   */
+  --z-index-inz-dropdown: 1000;
+  --z-index-inz-sticky: 1100;
+  --z-index-inz-fixed: 1200;
+  --z-index-inz-modal: 1300;
+  --z-index-inz-popover: 1400;
+  --z-index-inz-tooltip: 1500;
+
+  /*
+   * ANIMATIONS
+   * Maps to animate-inz-accordion-down, etc.
+   */
+  --animate-inz-accordion-down: accordion-down 0.2s ease-out;
+  --animate-inz-accordion-up: accordion-up 0.2s ease-out;
+  --animate-inz-in: fadeIn 0.2s ease-out;
+  --animate-inz-out: fadeOut 0.2s ease-out;
+
+  /*
+   * TRANSITIONS
+   * Maps to duration-inz-fast, ease-inz-fast, etc.
+   */
+  --transition-timing-function-inz-fast: ease;
+  --transition-duration-inz-fast: 150ms;
+  --transition-duration-inz-normal: 250ms;
+  --transition-duration-inz-slow: 350ms;
+}
+
+/* Keyframes must be defined outside the @theme block */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
