@@ -9,13 +9,13 @@ interface MenuItem {
 }
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'inz-app-sidebar',
   standalone: true,
   imports: [RouterModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
-export class SidebarComponent implements OnInit {
+export class InzForgeAppSidebarComponent implements OnInit {
   menuItems = signal<MenuItem[]>([]);
 
   constructor(private router: Router) {
