@@ -10,5 +10,5 @@ module.exports = {
       borderRadius: {'inz-md': 'var(--inz-radius, 0.5rem)'}
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate')]
 };

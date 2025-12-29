@@ -1,0 +1,10 @@
+@theme {
+  --color-inz-primary: var(--inz-primary, #3b82f6);
+  --color-inz-secondary: var(--inz-secondary, #1e293b);
+
+  --radius-inz-md: var(--inz-radius, 0.5rem);
+
+  /* Add animations from tailwindcss-animate if needed */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
