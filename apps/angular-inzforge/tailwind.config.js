@@ -1,0 +1,13 @@
+const {createGlobPatternsForDependencies} = require('@nx/angular/tailwind');
+const {join} = require('path');
+const baseConfig = require('../../tailwind.config.base.js'); // Adjust path based on app depth
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  presets: [baseConfig],
+  content: [
+    join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html}'),
+    ...createGlobPatternsForDependencies(__dirname),
+  ],
+  // No need to redeclare theme/plugins unless app-specific overrides are required
+};

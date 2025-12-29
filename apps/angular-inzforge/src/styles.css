@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
+/*!* You can add global styles to this file, and also import other style files *!*/
+
+/*:root {*/
+/*  --inz-primary: #3b82f6;*/
+/*  --inz-secondary: #1e293b;*/
+/*  --inz-radius: 0.5rem;*/
+/*}*/
+
+/*!* Dark mode support - Blueprint Ready *!*/
+/*.dark {*/
+/*  --inz-primary: #60a5fa;*/
+/*  --inz-secondary: #f8fafc;*/
+/*}*/
+
+/* 1. Import Tailwind v4 core */
+@import "tailwindcss";
+
+/* Import the shared theme for the whole app */
+@import "../../../libs/shared/utils/src/lib/theme.css";
+
+@plugin "tailwindcss-animate"; /* Load the plugin here */
+
+
+/* 3. Define your InzForge theme variables */
+@layer base {
+  :root {
+    --inz-primary: #3b82f6;
+    --inz-secondary: #1e293b;
+    --inz-radius: 0.5rem;
+  }
+}

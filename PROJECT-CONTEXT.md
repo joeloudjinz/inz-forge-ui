@@ -8,7 +8,7 @@
 
 ## 2. ENGINEERING STANDARDS
 
-### A. Angular 18+ (Modern Signals Architecture)
+### A. Angular 21+ (Modern Signals Architecture)
 - **NO Legacy:** Strictly no `@Input()`, `@Output()`, or `ViewChild()`. No `NgModules`.
 - **Signals:** Use `input()`, `input.required()`, `output()`, and `model()`.
 - **Logic:** Use `computed()` for derived state. Use `effect()` sparingly.
@@ -28,8 +28,8 @@
 ## 3. MONOREPO ARCHITECTURE (NX)
 We follow **Option A: One Library per Component**.
 - `libs/shared/utils`: The single shared dependency. Contains the `cn()` (tailwind-merge) helper and design tokens.
-- `libs/angular/ui/[component-name]`: Individual isolated libraries.
-- `libs/vue/ui/[component-name]`: Individual isolated libraries.
+- `libs/angular/[design-source-name]/[component-name]`: Individual isolated libraries.
+- `libs/vue/[design-source-name]/[component-name]`: Individual isolated libraries.
 - `apps/*-inzforge`: Showcase applications that serve as live documentation.
 
 ## 4. THE PORTABILITY PROTOCOL (CRITICAL)
