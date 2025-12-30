@@ -1,6 +1,6 @@
 import {Route} from '@angular/router';
 import {InzForgeAppHomePageComponent} from "./pages/home/home.component";
-import {InzForgeAppHyperUIAccordionPageComponent} from "./pages/hyperui/accordion/hyperui-accordion.component";
+import {InzForgeAppHyperUIAccordionPageComponent} from "./pages/hyperui/accordion/hyperui-accordion-page.component";
 
 export const appRoutes: Route[] = [
   {
