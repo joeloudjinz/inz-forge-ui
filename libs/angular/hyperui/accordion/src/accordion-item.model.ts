@@ -3,5 +3,5 @@ export interface InzForgeHyperUiAccordionItemModel {
   description: string;
   isExpandedByDefault?: boolean;
   iconClass?: string;
-  iconComponent?: string; // For custom icon components
+  iconComponent?: string;
 }
