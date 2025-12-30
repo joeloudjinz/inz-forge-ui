@@ -1,23 +1,24 @@
 module.exports = {
+  darkMode: ['class', '[class="dark"]'],
   theme: {
     extend: {
       colors: {
         inz: {
-          primary: 'hsl(var(--inz-primary))',
-          'primary-foreground': 'hsl(var(--inz-primary-foreground))',
-          secondary: 'hsl(var(--inz-secondary))',
-          'secondary-foreground': 'hsl(var(--inz-secondary-foreground))',
-          accent: 'hsl(var(--inz-accent))',
-          'accent-foreground': 'hsl(var(--inz-accent-foreground))',
-          destructive: 'hsl(var(--inz-destructive))',
-          'destructive-foreground': 'hsl(var(--inz-destructive-foreground))',
-          muted: 'hsl(var(--inz-muted))',
-          'muted-foreground': 'hsl(var(--inz-muted-foreground))',
-          background: 'hsl(var(--inz-background))',
-          foreground: 'hsl(var(--inz-foreground))',
-          border: 'hsl(var(--inz-border))',
-          input: 'hsl(var(--inz-input))',
-          ring: 'hsl(var(--inz-ring))',
+          primary: 'hsl(var(--inz-primary) / <alpha-value>)',
+          'primary-foreground': 'hsl(var(--inz-primary-foreground) / <alpha-value>)',
+          secondary: 'hsl(var(--inz-secondary) / <alpha-value>)',
+          'secondary-foreground': 'hsl(var(--inz-secondary-foreground) / <alpha-value>)',
+          accent: 'hsl(var(--inz-accent) / <alpha-value>)',
+          'accent-foreground': 'hsl(var(--inz-accent-foreground) / <alpha-value>)',
+          destructive: 'hsl(var(--inz-destructive) / <alpha-value>)',
+          'destructive-foreground': 'hsl(var(--inz-destructive-foreground) / <alpha-value>)',
+          muted: 'hsl(var(--inz-muted) / <alpha-value>)',
+          'muted-foreground': 'hsl(var(--inz-muted-foreground) / <alpha-value>)',
+          background: 'hsl(var(--inz-background) / <alpha-value>)',
+          foreground: 'hsl(var(--inz-foreground) / <alpha-value>)',
+          border: 'hsl(var(--inz-border) / <alpha-value>)',
+          input: 'hsl(var(--inz-input) / <alpha-value>)',
+          ring: 'hsl(var(--inz-ring) / <alpha-value>)',
         }
       },
       borderRadius: {
