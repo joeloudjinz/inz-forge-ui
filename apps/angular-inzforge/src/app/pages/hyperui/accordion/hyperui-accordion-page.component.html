@@ -2,6 +2,7 @@
   title="HyperUI Accordion"
   subtitle="Angular implementation of the HyperUI accordion"
 ></inz-app-page-headline>
+
 <div class="flex justify-between my-2">
   <div class="inline-flex">
     @for (modeOption of modeButtonGroupOptions; track modeOption.value) {
@@ -32,11 +33,21 @@
     </button>
   </div>
 </div>
-<div class="p-inz-10 border-2 inz-border rounded-inz-md" [class.bg-inz-foreground]="isDark()">
+
+<!--
+  [class.dark] applies the CSS block we added to theme.css
+  [attr.dir] tells Tailwind's ltr:/rtl: modifiers what to do
+  bg-inz-background ensures the container color flips automatically
+-->
+<div
+  class="p-inz-10 border-2 inz-border rounded-inz-md bg-inz-background transition-colors duration-300 dark:bg-inz-foreground"
+  [class.dark]="isDark()"
+  [attr.dir]="isRTL() ? 'rtl' : 'ltr'">
+
   <inz-hyperui-accordion
     [items]="AccordionItems"
     [mode]="mode()"
-    [isDark]="isDark()"
-    [isRTL]="isRTL()"
-  ></inz-hyperui-accordion>
+    [exclusive]="true">
+  </inz-hyperui-accordion>
+
 </div>

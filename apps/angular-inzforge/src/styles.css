@@ -1,4 +1,4 @@
-/* 1. Import Tailwind v4 core */
+/* Import Tailwind v4 core */
 @import "tailwindcss";
 
 /* Import the shared theme for the whole app */
@@ -7,27 +7,7 @@
 @plugin "tailwindcss-animate"; /* Load the plugin here */
 
 
-/* 3. Define your InzForge theme variables */
+/* Define your InzForge theme variables */
 @layer base {
   /* Override variables here if needed, but do not use raw numbers */
-
-  /* Dark mode support - Blueprint Ready */
-  /*.dark {*/
-  /*  !* Color Palette - Adjusted for dark mode based on Digital Blue theme *!*/
-  /*  --inz-primary: 0 0.6 0.6; !* hsl(216, 100%, 60%) - Lighter Digital Blue *!*/
-  /*  --inz-primary-foreground: 0 0 0; !* hsl(0, 0%, 0%) - Black *!*/
-  /*  --inz-secondary: 0.067 0.6 0.4; !* hsl(24, 100%, 40%) - Lighter Digital Orange *!*/
-  /*  --inz-secondary-foreground: 0.9 0.9 0.95; !* hsl(240, 10%, 92.5%) - Light gray *!*/
-  /*  --inz-accent: 0.667 0.6 0.6; !* hsl(240, 100%, 60%) - Lighter Digital Purple *!*/
-  /*  --inz-accent-foreground: 0.9 0.9 0.95; !* hsl(240, 10%, 92.5%) - Light gray *!*/
-  /*  --inz-destructive: 0.043 0.878 0.651; !* hsl(0, 75%, 65%) - Lighter red *!*/
-  /*  --inz-destructive-foreground: 1 1 1; !* hsl(0, 0%, 100%) - White *!*/
-  /*  --inz-muted: 0.667 0.1 0.15; !* hsl(240, 10%, 15%) - Darker Digital Blue equivalent *!*/
-  /*  --inz-muted-foreground: 0.667 0.1 0.5; !* hsl(240, 10%, 50%) - Medium gray *!*/
-  /*  --inz-background: 0 0 0.05; !* hsl(0, 0%, 5%) - Very dark gray *!*/
-  /*  --inz-foreground: 0.9 0.9 0.95; !* hsl(240, 10%, 92.5%) - Light gray *!*/
-  /*  --inz-border: 0.667 0.1 0.15; !* hsl(240, 10%, 15%) - Darker Digital Blue equivalent *!*/
-  /*  --inz-input: 0.667 0.1 0.15; !* hsl(240, 10%, 15%) - Darker Digital Blue equivalent *!*/
-  /*  --inz-ring: 0 0.6 0.6; !* hsl(216, 100%, 60%) - Lighter Digital Blue *!*/
-  /*}*/
 }
