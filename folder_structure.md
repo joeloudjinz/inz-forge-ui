@@ -1,5 +1,5 @@
 ## Project Folder Structure
-Generated on: Wed Dec 31 19:02:29 CET 2025
+Generated on: Wed Dec 31 19:34:45 CET 2025
 *(Respected .gitignore rules)*
 
 ```text
@@ -7,10 +7,8 @@ inz-forge-ui/
 ├── .editorconfig
 ├── .github/
 │   └── workflows/
-│       └── angular/
-│           └── hyperui/
-│               ├── component-test.yml
-│               └── unit-test.yml
+│       ├── angular.hyperui.component-tests.yml
+│       └── angular.hyperui.unit-tests.yml
 ├── .gitignore
 ├── .nx/
 ├── .prettierignore
