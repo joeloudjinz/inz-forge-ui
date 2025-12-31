@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InzForgeHyperUiAccordionComponent } from './accordion.component';
-import { InzForgeHyperUiAccordionItemModel } from './accordion-item.model';
-import { InzForgeHyperUiAccordionModes } from './accordion-modes.enum';
+import { InzForgeHyperUiAccordionComponent } from '@inz-forge-ui/accordion';
+import { InzForgeHyperUiAccordionItemModel } from '@inz-forge-ui/accordion';
+import { InzForgeHyperUiAccordionModes } from '@inz-forge-ui/accordion';
 import { vi } from 'vitest';
 
 describe('InzForgeHyperUiAccordionComponent', () => {

@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
     test: {
       globals: true,
       environment: 'jsdom',
-      setupFiles: ['src/test-setup.ts'],
+      setupFiles: ['tests/test-setup.ts'],
       include: ['**/*.spec.ts'],
       reporters: ['default'],
     },

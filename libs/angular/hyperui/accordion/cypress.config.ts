@@ -1,7 +1,7 @@
-import { defineConfig } from 'cypress';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import {defineConfig} from 'cypress';
+import {nxViteTsPaths} from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import angular from '@analogjs/vite-plugin-angular';
-import { resolve } from 'path';
+import {resolve} from 'path';
 
 export default defineConfig({
   component: {
@@ -19,7 +19,8 @@ export default defineConfig({
         ],
       },
     } as any, // FIX: Cast to 'any' because Cypress types incorrectly expect Webpack for Angular
-    specPattern: 'src/**/*.cy.ts',
+    // specPattern: 'src/**/*.cy.ts',
+    specPattern: '**/*.cy.ts',
     video: false,
     screenshotOnRunFailure: true,
   },
