@@ -9,7 +9,7 @@
       [attr.open]="item.isExpandedByDefault ? '' : null"
       [attr.name]="exclusive() ? groupName() : null">
 
-      <summary [class]="summaryClasses()" class="inz-accordion-summary">
+      <summary [class]="summaryClasses()" class="inz-accordion-summary" tabindex="0">
         <span class="flex items-center gap-2">
           @if (item.iconClass) {
             <i [class]="cn('size-5 shrink-0', item.iconClass)"></i>

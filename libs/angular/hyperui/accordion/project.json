@@ -8,6 +8,17 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@analogjs/vitest-angular:test"
+    },
+    "component-test": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "libs/angular/hyperui/accordion/cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true
+      }
     }
   }
 }

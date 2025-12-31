@@ -1,5 +1,5 @@
 ## Project Folder Structure
-Generated on: Wed Dec 31 14:00:41 CET 2025
+Generated on: Wed Dec 31 15:55:13 CET 2025
 *(Respected .gitignore rules)*
 
 ```text
@@ -83,6 +83,13 @@ inz-forge-ui/
 │   │   └── hyperui/
 │   │       └── accordion/
 │   │           ├── README.md
+│   │           ├── cypress/
+│   │           │   ├── screenshots/
+│   │           │   └── support/
+│   │           │       ├── commands.ts
+│   │           │       ├── component-index.html
+│   │           │       └── component.ts
+│   │           ├── cypress.config.ts
 │   │           ├── eslint.config.mjs
 │   │           ├── project.json
 │   │           ├── src/
@@ -90,11 +97,17 @@ inz-forge-ui/
 │   │           │   ├── accordion-item.model.ts
 │   │           │   ├── accordion-modes.enum.ts
 │   │           │   ├── accordion.component.css
+│   │           │   ├── accordion.component.cy.ts
 │   │           │   ├── accordion.component.html
+│   │           │   ├── accordion.component.spec.ts
 │   │           │   ├── accordion.component.ts
-│   │           │   └── index.ts
+│   │           │   ├── index.ts
+│   │           │   └── test-setup.ts
+│   │           ├── tsconfig.cy.json
 │   │           ├── tsconfig.json
-│   │           └── tsconfig.lib.json
+│   │           ├── tsconfig.lib.json
+│   │           ├── tsconfig.spec.json
+│   │           └── vite.config.mts
 │   └── shared/
 │       └── utils/
 │           ├── README.md
