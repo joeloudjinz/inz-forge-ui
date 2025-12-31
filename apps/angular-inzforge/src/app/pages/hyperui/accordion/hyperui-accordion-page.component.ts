@@ -30,6 +30,8 @@ export class InzForgeAppHyperUIAccordionPageComponent {
   protected showcaseContainerService = inject(InzForgeAppShowcaseContainerService);
   protected readonly AccordionItems = AccordionItems;
   protected mode = signal(InzForgeHyperUiAccordionModes.simple);
+  protected isExclusive = signal(false);
+
   protected readonly modeButtonGroupOptions: ModeButtonGroupOption[] = [
     {
       key: "simple",
@@ -53,6 +55,10 @@ export class InzForgeAppHyperUIAccordionPageComponent {
       isLast: true
     }
   ];
+
+  protected toggleExclusiveMode() {
+    this.isExclusive.update(v => !v);
+  }
 
   protected setMode(modeKey: string) {
     const selectedMode = this.modeButtonGroupOptions.find(option => option.key === modeKey);

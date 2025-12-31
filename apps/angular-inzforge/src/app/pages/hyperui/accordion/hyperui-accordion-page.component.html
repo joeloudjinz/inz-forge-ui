@@ -19,6 +19,16 @@
     }
   </div>
 
+  <div class="inline-flex">
+    <button
+      class="-ml-px border border-gray-200 px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white focus:outline-none disabled:pointer-events-auto disabled:opacity-50"
+      [class.bg-inz-secondary]="isExclusive()"
+      [class.text-inz-primary-foreground]="isExclusive()"
+      (click)="toggleExclusiveMode()">
+      {{ isExclusive() ? "Exclusive" : "Not Exclusive" }}
+    </button>
+  </div>
+
   <inz-app-dark-rtl-buttons-group></inz-app-dark-rtl-buttons-group>
 </div>
 
@@ -26,7 +36,7 @@
   <inz-hyperui-accordion
     [items]="AccordionItems"
     [mode]="mode()"
-    [exclusive]="true"
+    [exclusive]="isExclusive()"
     [class.dark]="showcaseContainerService.isDarkModeOn()"
   ></inz-hyperui-accordion>
 </inz-app-component-showcase-container>
