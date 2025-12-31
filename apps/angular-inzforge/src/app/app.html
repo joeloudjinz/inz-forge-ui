@@ -1,2 +1,12 @@
-<app-nx-welcome></app-nx-welcome>
-<router-outlet></router-outlet>
+<div class="flex h-screen bg-inz-background">
+  <inz-app-sidebar></inz-app-sidebar>
+
+  <!-- Main content -->
+  <main class="flex-1 ml-64 bg-inz-background min-h-screen">
+    <inz-app-navbar></inz-app-navbar>
+
+    <div class="max-w-7xl mx-auto px-inz-4 sm:px-inz-6 lg:px-inz-8 py-inz-8">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

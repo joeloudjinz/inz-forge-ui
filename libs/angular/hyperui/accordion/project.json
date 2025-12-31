@@ -1,0 +1,30 @@
+{
+  "name": "accordion",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/angular/hyperui/accordion/src",
+  "prefix": "inz",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/angular/hyperui/accordion/**/*.ts",
+          "libs/angular/hyperui/accordion/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@analogjs/vitest-angular:test"
+    },
+    "component-test": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "libs/angular/hyperui/accordion/cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true
+      }
+    }
+  }
+}

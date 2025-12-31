@@ -1,68 +1,70 @@
 # InzForge UI
+
 **A Source-First, Multi-Framework Blueprint Registry**
 
-Welcome to InzForge, a personal engineering lab and component registry dedicated to high-performance, standalone UI components.
-
-InzForge is not a traditional component library delivered via NPM. Instead, it is a Blueprint Registry (inspired by Shadcn/UI) where components are distributed as raw source code. This approach ensures maximum portability, zero-dependency bloat, and full developer ownership.
+Welcome to InzForge, a personal engineering lab and component registry dedicated to high-performance, standalone UI components. it is a Blueprint Registry (inspired by Shadcn/UI) where components are distributed as raw source code.
 
 ---
 
-## Vision
-The goal of InzForge is to bridge the gap between high-end design and modern frontend engineering. Every component is built twice—once for Angular and once for Vue—to master the nuances of state management, reactivity, and cross-browser stability.
+## Table of Contents
 
-- **Source-First:** Copy the code, own the logic, customize everything.
-- **Modern Reactivity:** Built with Angular 18+ (Signals) and Vue 3 (Composition API).
-- **Standalone Architecture:** Every component is an isolated unit, ready to be integrated into any project.
-- **Engineering Excellence:** Dual-layer testing with Cypress and Playwright ensures production-grade reliability.
-
----
+- [InzForge UI](#inzforge-ui)
+- [Technical Stack](#technical-stack)
+- [Available Libraries](#available-libraries)
+  - [Shared Libraries](#shared-libraries)
+  - [Angular Libraries](#angular-libraries)
+    - [Accordion](#accordion)
+- [Getting Started](#getting-started)
+- [Testing Strategy](#testing-strategy)
 
 ## Technical Stack
-*   **Monorepo:** Nx
-*   **Framework A:** Angular 18+ (Standalone Components, Signals)
-*   **Framework B:** Vue 3 (Vite, script setup, Composition API)
-*   **Styling:** TailwindCSS (with centralized Design Tokens)
-*   **Testing:**
-    *   **Cypress:** Component Testing (Local/Interactive)
-    *   **Playwright:** E2E Cross-browser Testing (Safari, Firefox, Chrome)
+
+* **Monorepo:** Nx 22.3.x
+* **Framework A:** Angular 21+ (Standalone Components, Signals-First)
+* **Framework B:** Vue 3.5+ (Vite, script setup, Composition API)
+* **Styling:** TailwindCSS 4.1.x (with centralized Design Tokens)
+* **Testing:**
+  * **Cypress:** Component Testing (Local/Interactive)
+  * **Playwright:** E2E Cross-browser Testing (Safari, Firefox, Chrome)
+* **Language:** TypeScript 5.9.x
 
 ---
 
-## Repository Structure
-InzForge follows a modular "One Library per Component" strategy:
+## Available Libraries
 
-```text
-inzforge/
-├── apps/
-│   ├── angular-inzforge      # Angular Showcase Gallery
-│   └── vue-inzforge          # Vue Showcase Gallery
-├── libs/
-│   ├── shared/utils          # Shared logic (Tailwind merge, etc.)
-│   ├── angular/ui/           # Isolated Angular Blueprints
-│   │   └── button/           # Self-contained button library
-│   └── vue/ui/               # Isolated Vue Blueprints
-│       └── button/           # Self-contained button library
-├── tailwind.config.base.js    # Centralized Design Tokens
-└── PROJECT_CONTEXT.md        # AI-Agent Engineering Rules
-```
+The InzForge UI project is organized as a monorepo with libraries for different frameworks and shared utilities. Below is a list of the existing libraries:
+
+### Shared Libraries
+
+- **utils** (`libs/shared/utils`) - Contains shared utilities including the centralized `theme.css` file for Tailwind design tokens and global utility functions. This is the single source of truth for styling across all components. [Read more about it.](./libs/shared/utils/README.md)
+
+### Angular Libraries
+
+- **hyperui** (`libs/angular/hyperui`) - A collection of Angular components based on the HyperUI design system. [Read more about it.](./libs/angular/hyperui/README.md)
+
+  - **accordion** (`libs/angular/hyperui/accordion`) - An Angular implementation of the HyperUI accordion component with multiple styles and configurations. Features include multiple accordion modes (Simple, Divided, Compact), dark mode support, RTL support, keyboard navigation, and accessibility support. [Read more about it.](./libs/angular/hyperui/accordion/README.md)
 
 ---
 
 ## Getting Started
 
 ### 1. Clone the Repo
+
 ```bash
-git clone https://github.com/joeinz/inzforge.git
-cd inzforge
+git clone https://github.com/joeinz/inz-forge-ui.git
+cd inz-forge-ui
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Run the Showcases
+
 To see the components in action:
+
 ```bash
 # Start Angular Showcase
 npx nx serve angular-inzforge
@@ -74,35 +76,20 @@ npx nx serve vue-inzforge
 ---
 
 ## Testing Strategy
+
 InzForge maintains a strict testing mandate for every component.
 
 **Cypress (Component Testing):**
+
 ```bash
 npx nx component-test [component-name]
 ```
 
 **Playwright (E2E Cross-browser):**
+
 ```bash
 npx nx e2e [showcase-app-name]
 ```
-
----
-
-## Roadmap
-- [ ] Initialize Workspace and Shared Utils
-- [ ] inz-button (Angular and Vue)
-- [ ] inz-input (Angular and Vue)
-- [ ] inz-card (Angular and Vue)
-- [ ] Experimental CLI for source-code injection
-
----
-
-## Author
-**Joeinz**
-- GitHub: [@joeinz](https://github.com/joeinz)
-
-## License
-This project is [MIT](./LICENSE) licensed. You are free to copy, modify, and use the blueprints in your own projects.
 
 ---
 Generated by the InzForge Engineering Lab.

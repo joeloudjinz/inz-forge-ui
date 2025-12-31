@@ -2,7 +2,7 @@
   "name": "angular-inzforge",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "inz-app",
   "sourceRoot": "apps/angular-inzforge/src",
   "tags": [],
   "targets": {
@@ -20,7 +20,9 @@
             "input": "apps/angular-inzforge/public"
           }
         ],
-        "styles": ["apps/angular-inzforge/src/styles.css"]
+        "styles": [
+          "apps/angular-inzforge/src/styles.css"
+        ]
       },
       "configurations": {
         "production": {

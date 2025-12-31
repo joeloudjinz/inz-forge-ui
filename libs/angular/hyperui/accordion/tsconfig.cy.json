@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../../../dist/out-tsc",
+    "types": [
+      "cypress",
+      "node",
+      "cypress-real-events"
+    ],
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "tests/**/*.cy.ts",     // <--- ADD THIS
+    "cypress.config.ts",
+    "cypress/**/*.ts",
+    "**/*.d.ts"
+  ]
+}

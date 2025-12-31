@@ -1,0 +1,35 @@
+<div class="fixed inset-y-0 left-0 z-inz-sticky w-64 bg-inz-background border-r border-inz-border">
+  <div class="h-full overflow-y-auto pt-inz-4 px-inz-6">
+    <h3 class="text-inz-lg font-semibold mb-inz-4">InzForge UI</h3>
+    <ul class="list-none p-0 m-0 flex flex-col space-y-inz-1">
+      @for (item of menuItems(); track item.path) {
+        <li>
+          <a
+            class="flex items-center w-full py-inz-2 px-inz-3 font-medium text-inz-foreground rounded-inz-md transition-colors duration-inz-normal hover:bg-inz-muted"
+            [routerLink]="item.path"
+            [class.!bg-inz-secondary]="isActive(item.path)"
+            [class.!text-inz-accent-foreground]="isActive(item.path)">
+            <span class="whitespace-nowrap overflow-hidden text-ellipsis">{{ item.label }}</span>
+          </a>
+
+          <!-- Render child items if they exist -->
+          @if (item.children && item.children.length > 0) {
+            <ul
+              class="list-none p-0 m-0 pt-inz-2 flex flex-col space-y-inz-1 ml-inz-4">
+              @for (child of item.children; track child.path) {
+                <li>
+                  <a
+                    class="flex items-center w-full py-inz-2 px-inz-3 text-inz-sm font-medium rounded-inz-md transition-colors duration-inz-normal hover:bg-inz-muted"
+                    [routerLink]="child.path"
+                    routerLinkActive="bg-inz-secondary text-inz-accent-foreground">
+                    <span class="whitespace-nowrap overflow-hidden text-ellipsis">{{ child.label }}</span>
+                  </a>
+                </li>
+              }
+            </ul>
+          }
+        </li>
+      }
+    </ul>
+  </div>
+</div>

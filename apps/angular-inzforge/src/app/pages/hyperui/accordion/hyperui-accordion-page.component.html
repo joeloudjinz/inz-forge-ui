@@ -1,0 +1,42 @@
+<inz-app-page-headline
+  title="HyperUI Accordion"
+  subtitle="Angular implementation of the HyperUI accordion"
+></inz-app-page-headline>
+
+<div class="flex justify-between my-2">
+  <div class="inline-flex">
+    @for (modeOption of modeButtonGroupOptions; track modeOption.value) {
+      <button
+        class="border border-inz-border px-inz-3 py-inz-2 font-medium text-inz-foreground transition-colors hover:bg-inz-muted hover:text-inz-foreground focus:z-inz-sticky focus:ring-2 focus:ring-inz-primary focus:ring-offset-2 focus:ring-offset-inz-background focus:outline-none disabled:pointer-events-auto disabled:opacity-50"
+        [class.-ml-px]="!modeOption.isFirst"
+        [class.rounded-l-inz-sm]="modeOption.isFirst"
+        [class.rounded-r-inz-sm]="modeOption.isLast"
+        [class.bg-inz-secondary]="mode() === modeOption.value"
+        [class.text-inz-primary-foreground]="mode() === modeOption.value"
+        (click)="setMode(modeOption.key)">
+        {{ modeOption.label }}
+      </button>
+    }
+  </div>
+
+  <div class="inline-flex">
+    <button
+      class="-ml-px border border-gray-200 px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white focus:outline-none disabled:pointer-events-auto disabled:opacity-50"
+      [class.bg-inz-secondary]="isExclusive()"
+      [class.text-inz-primary-foreground]="isExclusive()"
+      (click)="toggleExclusiveMode()">
+      {{ isExclusive() ? "Exclusive" : "Not Exclusive" }}
+    </button>
+  </div>
+
+  <inz-app-dark-rtl-buttons-group></inz-app-dark-rtl-buttons-group>
+</div>
+
+<inz-app-component-showcase-container>
+  <inz-hyperui-accordion
+    [items]="AccordionItems"
+    [mode]="mode()"
+    [exclusive]="isExclusive()"
+    [class.dark]="showcaseContainerService.isDarkModeOn()"
+  ></inz-hyperui-accordion>
+</inz-app-component-showcase-container>

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcome } from './nx-welcome';
+import { InzForgeAppSidebarComponent } from './shared/components/app-sidebare/sidebar.component';
+import {InzForgeAppNavBarComponent} from "./shared/components/app-navbar/app-navbar.component";
 
 @Component({
-  imports: [NxWelcome, RouterModule],
+  imports: [RouterModule, InzForgeAppSidebarComponent, InzForgeAppNavBarComponent],
   selector: 'app-root',
-  templateUrl: './app.html',
-  styleUrl: './app.css',
+  templateUrl: './app.html'
 })
 export class App {
-  protected title = 'angular-inzforge';
+  protected title = 'InzForge UI - Angular Showroom';
 }

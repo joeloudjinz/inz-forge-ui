@@ -1,0 +1,195 @@
+/*@import "tailwindcss";*/
+
+/*
+  @theme BLOCK (Restored & Configured)
+  We explicitly define the utilities here to guarantee they exist.
+  Instead of hardcoded colors, we point them to the variables defined below.
+
+  Format: --color-[name]: hsl(var(--[variable-name]));
+*/
+@theme {
+  /* Colors - Maps to bg-inz-primary, text-inz-primary, etc. */
+  --color-inz-primary: hsl(var(--inz-primary));
+  --color-inz-primary-foreground: hsl(var(--inz-primary-foreground));
+
+  --color-inz-secondary: hsl(var(--inz-secondary));
+  --color-inz-secondary-foreground: hsl(var(--inz-secondary-foreground));
+
+  --color-inz-accent: hsl(var(--inz-accent));
+  --color-inz-accent-foreground: hsl(var(--inz-accent-foreground));
+
+  --color-inz-destructive: hsl(var(--inz-destructive));
+  --color-inz-destructive-foreground: hsl(var(--inz-destructive-foreground));
+
+  --color-inz-muted: hsl(var(--inz-muted));
+  --color-inz-muted-foreground: hsl(var(--inz-muted-foreground));
+
+  --color-inz-background: hsl(var(--inz-background));
+  --color-inz-foreground: hsl(var(--inz-foreground));
+
+  --color-inz-border: hsl(var(--inz-border));
+  --color-inz-input: hsl(var(--inz-input));
+  --color-inz-ring: hsl(var(--inz-ring));
+
+  /* Border Radius - Maps to rounded-inz-sm */
+  --radius-inz-sm: var(--inz-radius-sm);
+  --radius-inz-md: var(--inz-radius-md);
+  --radius-inz-lg: var(--inz-radius-lg);
+  --radius-inz-xl: var(--inz-radius-xl);
+
+  /* Spacing - Maps to p-inz-1, m-inz-1 */
+  --spacing-inz-0: 0rem;
+  --spacing-inz-1: 0.25rem;
+  --spacing-inz-2: 0.5rem;
+  --spacing-inz-3: 0.75rem;
+  --spacing-inz-4: 1rem;
+  --spacing-inz-5: 1.25rem;
+  --spacing-inz-6: 1.5rem;
+  --spacing-inz-8: 2rem;
+  --spacing-inz-10: 2.5rem;
+  --spacing-inz-12: 3rem;
+  --spacing-inz-16: 4rem;
+  --spacing-inz-20: 5rem;
+
+  /* Typography */
+  --text-inz-xs: 0.75rem;
+  --text-inz-sm: 0.875rem;
+  --text-inz-base: 1rem;
+  --text-inz-lg: 1.125rem;
+  --text-inz-xl: 1.25rem;
+  --text-inz-2xl: 1.5rem;
+  --text-inz-3xl: 1.875rem;
+  --text-inz-4xl: 2.25rem;
+  --text-inz-5xl: 3rem;
+
+  --leading-inz-tight: 1.25;
+  --leading-inz-snug: 1.375;
+  --leading-inz-normal: 1.5;
+  --leading-inz-relaxed: 1.625;
+
+  /* Animations */
+  --animate-inz-accordion-down: accordion-down 0.2s ease-out;
+  --animate-inz-accordion-up: accordion-up 0.2s ease-out;
+  --animate-inz-in: fadeIn 0.2s ease-out;
+  --animate-inz-out: fadeOut 0.2s ease-out;
+
+  /* Transitions */
+  --transition-timing-function-inz-fast: ease;
+  --transition-duration-inz-fast: 150ms;
+  --transition-duration-inz-normal: 250ms;
+  --transition-duration-inz-slow: 350ms;
+
+  /* Shadows */
+  --shadow-inz-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-inz: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-inz-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-inz-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-inz-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Z-Index */
+  --z-index-inz-dropdown: 1000;
+  --z-index-inz-sticky: 1100;
+  --z-index-inz-fixed: 1200;
+  --z-index-inz-modal: 1300;
+  --z-index-inz-popover: 1400;
+  --z-index-inz-tooltip: 1500;
+}
+
+/*
+  ROOT VARIABLES (Light Mode)
+  define the RAW channels (H S L) here.
+  This allows the `hsl()` wrapper in @theme to work correctly.
+*/
+:root {
+  --inz-background: 0 0% 100%;
+  --inz-foreground: 222.2 84% 4.9%;
+
+  --inz-primary: 216 100% 50%;
+  --inz-primary-foreground: 0 0% 100%;
+
+  --inz-secondary: 24 100% 30%;
+  --inz-secondary-foreground: 0 0% 100%;
+
+  --inz-accent: 240 100% 50%;
+  --inz-accent-foreground: 0 0% 100%;
+
+  --inz-destructive: 0 75% 55%;
+  --inz-destructive-foreground: 0 0% 100%;
+
+  --inz-muted: 240 10% 94.9%;
+  --inz-muted-foreground: 240 10% 60%;
+
+  --inz-border: 240 10% 80%;
+  --inz-input: 240 10% 80%;
+  --inz-ring: 216 100% 50%;
+
+  --inz-radius-sm: 0.25rem;
+  --inz-radius-md: 0.5rem;
+  --inz-radius-lg: 0.75rem;
+  --inz-radius-xl: 1rem;
+}
+
+/*
+  DARK MODE OVERRIDES
+  The .dark class automatically swaps these variables.
+*/
+.dark {
+  --inz-background: 222.2 84% 4.9%;
+  --inz-foreground: 210 40% 98%;
+
+  --inz-primary: 210 40% 98%;
+  --inz-primary-foreground: 222.2 47.4% 11.2%;
+
+  --inz-secondary: 217.2 32.6% 17.5%;
+  --inz-secondary-foreground: 210 40% 98%;
+
+  --inz-muted: 217.2 32.6% 17.5%;
+  --inz-muted-foreground: 215 20.2% 65.1%;
+
+  --inz-accent: 217.2 32.6% 17.5%;
+  --inz-accent-foreground: 210 40% 98%;
+
+  --inz-destructive: 0 62.8% 30.6%;
+  --inz-destructive-foreground: 210 40% 98%;
+
+  --inz-border: 217.2 32.6% 17.5%;
+  --inz-input: 217.2 32.6% 17.5%;
+  --inz-ring: 212.7 26.8% 83.9%;
+}
+
+/* KEYFRAMES */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

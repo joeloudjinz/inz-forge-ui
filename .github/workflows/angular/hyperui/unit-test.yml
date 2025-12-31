@@ -1,0 +1,49 @@
+# Name of the workflow as it appears in the GitHub Actions tab
+name: HyperUI Components Unit Tests
+
+# Configuration for when this workflow should run
+on:
+  # Trigger the workflow on 'push' events
+  push:
+    branches:
+      # 1. Trigger when code is merged into the 'main' and 'dev' branches
+      - 'main'
+      - 'dev'
+
+      # 2. Trigger when pushing commits to any branch containing "components/hyperui"
+      # The '**' acts as a wildcard ensuring it matches regardless of prefixes like 'feature/' or 'fix/'
+      - '**components/hyperui**'
+
+# Define the jobs (tasks) to run
+jobs:
+  # Name of the job
+  unit-tests:
+    # The operating system environment to run the job on
+    runs-on: ubuntu-latest
+
+    # Sequence of steps to execute
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Fetch all history to ensure tools like Nx can trace changes if needed
+          fetch-depth: 0
+
+      # Step 2: Set up the Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Ensure this matches your local Node version
+          cache: 'npm'       # Cache dependencies for faster installs
+
+      # Step 3: Install dependencies based on package-lock.json
+      - name: Install dependencies
+        run: npm ci
+
+      # Step 4: Run the unit tests (Jest/Karma)
+      # --target=test: Looks for the "test" script in project.json
+      # --projects="libs/angular/hyperui/*": Scopes execution to libraries in this folder
+      # --parallel: Runs multiple test suites at the same time
+      - name: Run Unit Tests
+        run: npx nx run-many --target=test --projects="libs/angular/hyperui/*" --parallel
