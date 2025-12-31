@@ -1,0 +1,50 @@
+# Name of the workflow
+name: HyperUI Components - Component Tests
+
+# Configuration for when this workflow should run
+on:
+  # Trigger the workflow on 'push' events
+  push:
+    branches:
+      # 1. Trigger when code is merged into the 'main' branch
+      - 'main'
+
+      # 2. Trigger when pushing commits to any branch containing "components/hyperui"
+      - '**components/hyperui**'
+
+# Define the jobs
+jobs:
+  # Name of the job
+  component-tests:
+    # Use Ubuntu latest (includes Chrome/Firefox browsers)
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # Step 3: Install dependencies (includes Cypress binary)
+      - name: Install dependencies
+        run: npm ci
+
+      # Step 4: Explicitly install Cypress binary (Good practice for CI stability)
+      - name: Install Cypress Binary
+        run: npx cypress install
+
+      # Step 5: Run the component tests (Cypress)
+      # --target=component-test: Matches the Cypress target in your project.json
+      # --projects="libs/angular/hyperui/*": Scopes execution
+      # --parallel: Parallel execution
+      # --configuration=ci: Uses the 'ci' configuration (usually headless) defined in project.json or defaults
+      - name: Run Cypress Component Tests
+        run: npx nx run-many --target=component-test --projects="libs/angular/hyperui/*" --parallel --configuration=ci
