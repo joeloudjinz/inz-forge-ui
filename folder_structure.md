@@ -1,5 +1,5 @@
 ## Project Folder Structure
-Generated on: Tue Dec 30 11:12:11 CET 2025
+Generated on: Wed Dec 31 14:00:41 CET 2025
 *(Respected .gitignore rules)*
 
 ```text
@@ -27,6 +27,8 @@ inz-forge-ui/
 │   │   │   │   │           ├── hyperui-accordion-page.component.html
 │   │   │   │   │           ├── hyperui-accordion-page.component.ts
 │   │   │   │   │           └── resources.ts
+│   │   │   │   ├── services/
+│   │   │   │   │   └── theme.service.ts
 │   │   │   │   └── shared/
 │   │   │   │       └── components/
 │   │   │   │           ├── app-navbar/
@@ -35,8 +37,13 @@ inz-forge-ui/
 │   │   │   │           │   ├── sidebar.component.css
 │   │   │   │           │   ├── sidebar.component.html
 │   │   │   │           │   └── sidebar.component.ts
-│   │   │   │           └── page-headline/
-│   │   │   │               └── page-headline.component.ts
+│   │   │   │           ├── dark-rtl-buttons-group/
+│   │   │   │           │   └── dark-rtl-buttons-group.component.ts
+│   │   │   │           ├── page-headline/
+│   │   │   │           │   └── page-headline.component.ts
+│   │   │   │           └── showcase-container/
+│   │   │   │               ├── showcase-container.component.ts
+│   │   │   │               └── showcase-container.service.ts
 │   │   │   ├── index.html
 │   │   │   ├── main.ts
 │   │   │   └── styles.css
