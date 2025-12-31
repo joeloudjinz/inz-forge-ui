@@ -1,0 +1,88 @@
+module.exports = {
+  darkMode: ['class', '[class="dark"]'],
+  theme: {
+    extend: {
+      colors: {
+        inz: {
+          primary: 'hsl(var(--inz-primary) / <alpha-value>)',
+          'primary-foreground': 'hsl(var(--inz-primary-foreground) / <alpha-value>)',
+          secondary: 'hsl(var(--inz-secondary) / <alpha-value>)',
+          'secondary-foreground': 'hsl(var(--inz-secondary-foreground) / <alpha-value>)',
+          accent: 'hsl(var(--inz-accent) / <alpha-value>)',
+          'accent-foreground': 'hsl(var(--inz-accent-foreground) / <alpha-value>)',
+          destructive: 'hsl(var(--inz-destructive) / <alpha-value>)',
+          'destructive-foreground': 'hsl(var(--inz-destructive-foreground) / <alpha-value>)',
+          muted: 'hsl(var(--inz-muted) / <alpha-value>)',
+          'muted-foreground': 'hsl(var(--inz-muted-foreground) / <alpha-value>)',
+          background: 'hsl(var(--inz-background) / <alpha-value>)',
+          foreground: 'hsl(var(--inz-foreground) / <alpha-value>)',
+          border: 'hsl(var(--inz-border) / <alpha-value>)',
+          input: 'hsl(var(--inz-input) / <alpha-value>)',
+          ring: 'hsl(var(--inz-ring) / <alpha-value>)',
+        }
+      },
+      borderRadius: {
+        'inz-sm': 'var(--inz-radius-sm)',
+        'inz-md': 'var(--inz-radius-md)',
+        'inz-lg': 'var(--inz-radius-lg)',
+        'inz-xl': 'var(--inz-radius-xl)',
+      },
+      spacing: {
+        'inz-0': 'var(--inz-spacing-0)',
+        'inz-1': 'var(--inz-spacing-1)',
+        'inz-2': 'var(--inz-spacing-2)',
+        'inz-3': 'var(--inz-spacing-3)',
+        'inz-4': 'var(--inz-spacing-4)',
+        'inz-5': 'var(--inz-spacing-5)',
+        'inz-6': 'var(--inz-spacing-6)',
+        'inz-8': 'var(--inz-spacing-8)',
+        'inz-10': 'var(--inz-spacing-10)',
+        'inz-12': 'var(--inz-spacing-12)',
+        'inz-16': 'var(--inz-spacing-16)',
+        'inz-20': 'var(--inz-spacing-20)',
+      },
+      fontSize: {
+        'inz-xs': ['var(--inz-font-size-xs)', 'var(--inz-line-height-tight)'],
+        'inz-sm': ['var(--inz-font-size-sm)', 'var(--inz-line-height-snug)'],
+        'inz-base': ['var(--inz-font-size-base)', 'var(--inz-line-height-normal)'],
+        'inz-lg': ['var(--inz-font-size-lg)', 'var(--inz-line-height-normal)'],
+        'inz-xl': ['var(--inz-font-size-xl)', 'var(--inz-line-height-relaxed)'],
+        'inz-2xl': ['var(--inz-font-size-2xl)', 'var(--inz-line-height-relaxed)'],
+        'inz-3xl': ['var(--inz-font-size-3xl)', 'var(--inz-line-height-relaxed)'],
+        'inz-4xl': ['var(--inz-font-size-4xl)', 'var(--inz-line-height-relaxed)'],
+        'inz-5xl': ['var(--inz-font-size-5xl)', 'var(--inz-line-height-relaxed)'],
+      },
+      boxShadow: {
+        'inz-sm': 'var(--inz-shadow-sm)',
+        'inz': 'var(--inz-shadow)',
+        'inz-md': 'var(--inz-shadow-md)',
+        'inz-lg': 'var(--inz-shadow-lg)',
+        'inz-xl': 'var(--inz-shadow-xl)',
+      },
+      animation: {
+        'inz-accordion-down': 'var(--inz-accordion-down)',
+        'inz-accordion-up': 'var(--inz-accordion-up)',
+        'inz-in': 'var(--inz-animate-in)',
+        'inz-out': 'var(--inz-animate-out)',
+        'inz-slide-in-from-left': 'var(--inz-slide-in-from-left)',
+        'inz-slide-in-from-right': 'var(--inz-slide-in-from-right)',
+        'inz-scale-in': 'var(--inz-scale-in)',
+        'inz-scale-out': 'var(--inz-scale-out)',
+      },
+      transitionTimingFunction: {
+        'inz-fast': 'var(--inz-transition-fast)',
+        'inz-normal': 'var(--inz-transition-normal)',
+        'inz-slow': 'var(--inz-transition-slow)',
+      },
+      zIndex: {
+        'inz-dropdown': 'var(--inz-z-dropdown)',
+        'inz-sticky': 'var(--inz-z-sticky)',
+        'inz-fixed': 'var(--inz-z-fixed)',
+        'inz-modal': 'var(--inz-z-modal)',
+        'inz-popover': 'var(--inz-z-popover)',
+        'inz-tooltip': 'var(--inz-z-tooltip)',
+      }
+    },
+  },
+  plugins: [require('tailwindcss-animate')]
+};

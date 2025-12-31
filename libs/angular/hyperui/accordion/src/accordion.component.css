@@ -1,0 +1,48 @@
+/* Define CSS variables for light and dark mode */
+:host {
+  /* Default (light mode) values */
+  --accordion-bg: #ffffff;
+  --accordion-text: #2d3748;
+  --accordion-border: #e2e8f0;
+  --accordion-hover-bg: #f7fafc;
+  --accordion-divide-color: #e2e8f0;
+  --accordion-summary-text: #1a202c;
+  --accordion-summary-hover-text: #4a5568;
+  --accordion-content-text: #4a5568;
+}
+
+/* Dark mode values when .dark class is present on host */
+:host(.dark) {
+  --accordion-bg: #1a202c;
+  --accordion-text: #e2e8f0;
+  --accordion-border: #4a5568;
+  --accordion-hover-bg: #2d3748;
+  --accordion-divide-color: #4a5568;
+  --accordion-summary-text: #e2e8f0;
+  --accordion-summary-hover-text: #cbd5e0;
+  --accordion-content-text: #cbd5e0;
+}
+
+/* Apply the CSS variables to the accordion elements */
+.inz-accordion-container {
+  /* For divided mode - using divide color */
+}
+
+.inz-accordion-container.divide-y {
+  border-color: var(--accordion-divide-color);
+}
+
+.inz-accordion-summary {
+  background-color: var(--accordion-bg);
+  color: var(--accordion-summary-text);
+  border-color: var(--accordion-border);
+}
+
+.inz-accordion-summary:hover {
+  background-color: var(--accordion-hover-bg);
+  color: var(--accordion-summary-hover-text);
+}
+
+.inz-accordion-content {
+  color: var(--accordion-content-text);
+}

@@ -1,78 +1,112 @@
-# 🛠 INZFORGE UI: MASTER PROJECT CONTEXT
+# INZFORGE UI: MASTER PROJECT CONTEXT
 
-## 1. PROJECT VISION & PHILOSOPHY
-**InzForge** is a "Source-First" blueprint registry. We do not distribute compiled packages; we distribute **production-grade engineering blueprints**.
-- **Distribution:** Shadcn-style. Source code is the product.
-- **Independence:** Every component must be "pluggable" into a raw Angular or Vue project with minimal friction.
-- **Consistency:** If a design exists in Angular, it must exist with a mirrored API in Vue.
+## 1. IDENTITY & PHILOSOPHY
 
-## 2. ENGINEERING STANDARDS
+**InzForge** is a "Source-First" blueprint registry. We do not distribute compiled NPM packages; we provide **production-grade engineering blueprints**.
 
-### A. Angular 18+ (Modern Signals Architecture)
-- **NO Legacy:** Strictly no `@Input()`, `@Output()`, or `ViewChild()`. No `NgModules`.
-- **Signals:** Use `input()`, `input.required()`, `output()`, and `model()`.
-- **Logic:** Use `computed()` for derived state. Use `effect()` sparingly.
-- **Change Detection:** Strictly `ChangeDetectionStrategy.OnPush`.
-- **Encapsulation:** Default to `ViewEncapsulation.Emulated`. Use `ViewEncapsulation.None` only for global utility styles.
+- **Distribution Model:** Shadcn-style. The source code is the final product.
+- **Blueprint Concept:** Every component is an isolated library (`libs/`) that users can "pluck" and integrate into their own projects.
+- **Framework Parity:** Every UI design implementation must be mirrored: if it exists in Angular, it must be implemented with a mirrored API in Vue.
 
-### B. Vue 3 (Modern Composition API)
+## 2. TECHNICAL STACK VERSIONS
+
+- **Monorepo:** Nx 22.3.x
+- **Angular:** 21.0.x (Standalone, Signals-First)
+- **Vue:** 3.5.x (Composition API, `<script setup>`)
+- **Styling:** TailwindCSS 4.1.x (utilizing `@tailwindcss/postcss`)
+- **Testing:** Cypress (Component), Playwright (E2E), Vitest (Unit)
+- **Language:** TypeScript 5.9.x
+
+## 3. CORE ENGINEERING STANDARDS
+
+### A. Angular 21 (Signals-Only Architecture)
+
+- **NO LEGACY:** Absolutely no `@Input`, `@Output`, `@ViewChild`, or `NgModules`.
+- **Signals API:** Use `input()`, `input.required()`, `output()`, and `model()` for two-way binding.
+- **Reactivity:** Use `computed()` for derived state and `effect()` only when necessary for DOM side-effects.
+- **Performance:** Strictly use `ChangeDetectionStrategy.OnPush`.
+- **Component Style:** Use `ViewEncapsulation.Emulated` by default.
+
+### B. Vue 3.5 (Composition API)
+
 - **Syntax:** Strictly `<script setup lang="ts">`.
-- **State:** Use `ref()` for all state. Use `computed()` for derived values.
-- **Props/Emits:** Use `defineProps<{...}>()` and `defineEmits<{...}>()`.
-- **Styling:** Use `<style scoped>` to ensure component isolation.
+- **Reactivity:** Use `ref()` for all state and `computed()` for derived values.
+- **Macros:** Use `defineProps<{...}>()` and `defineEmits<{...}>()`.
+- **Encapsulation:** Use `<style scoped>` for component-specific styles.
 
 ### C. Branding & Naming
-- **Prefix:** Every component must be prefixed with `inz-` (e.g., `inz-button.component.ts`, `InzButton.vue`).
-- **Workspace:** The root namespace is `inzforge`.
 
-## 3. MONOREPO ARCHITECTURE (NX)
-We follow **Option A: One Library per Component**.
-- `libs/shared/utils`: The single shared dependency. Contains the `cn()` (tailwind-merge) helper and design tokens.
-- `libs/angular/ui/[component-name]`: Individual isolated libraries.
-- `libs/vue/ui/[component-name]`: Individual isolated libraries.
-- `apps/*-inzforge`: Showcase applications that serve as live documentation.
+- **Prefix:** All components must use the `inz-` prefix (e.g., `inz-accordion`).
+- **Files:** Follow `[name].[type].ts` convention (e.g., `accordion.component.ts`, `accordion-item.model.ts`).
 
-## 4. THE PORTABILITY PROTOCOL (CRITICAL)
-When an agent is asked to "Generate an Integration Blueprint" for a component:
-1. **Self-Containment:** The component must include its own Tailwind `@apply` CSS block.
-2. **Dependency Mapping:** Explicitly list any external peer dependencies (e.g., `lucide-angular`, `clsx`).
-3. **Import Resolution:** Change `@inzforge/shared/utils` to a local relative import (e.g., `../../utils/inz-logic.ts`) or provide the utility code as part of the output.
-4. **Zero Global CSS:** The component should not rely on a global `styles.css` other than the base Tailwind directives.
+## 4. MONOREPO STRUCTURE
 
-## 5. DUAL-LAYER TESTING MANDATE
-Every component implementation is incomplete without:
+Libraries are organized by framework and design source:
 
-### Layer 1: Cypress Component Testing (Visual/Interactive)
-- Purpose: Logic validation, event emission, and visual state checks (hover, focus).
-- Location: `libs/[framework]/[component]/cypress/...`
-- Constraint: Tests must verify ARIA roles and keyboard accessibility (`Enter`, `Space`, `Tab`, `Esc`).
+- `libs/shared/utils`: Single source of truth for `theme.css` and global `utils.ts` (Tailwind merging).
+- `libs/angular/[design-source]/[component-name]`: e.g., `libs/angular/hyperui/accordion`.
+- `libs/vue/[design-source]/[component-name]`: e.g., `libs/vue/hyperui/accordion`.
+- `apps/angular-inzforge`: The Angular showcase/documentation gallery.
+- `apps/vue-inzforge`: The Vue showcase/documentation gallery.
 
-### Layer 2: Playwright E2E (Cross-Browser Stability)
-- Purpose: Cross-browser rendering validation (Chromium, Firefox, WebKit).
-- Location: `apps/[framework]-inzforge-e2e/...`
-- Constraint: Must test the component within the context of the Showcase App layout.
+## 5. THE PORTABILITY PROTOCOL (SHADCN RULES)
 
-## 6. STYLING & THEMING
-- **Design Tokens:** Always map Tailwind classes to CSS variables where possible (e.g., `bg-[var(--inz-primary)]`).
-- **Shared Config:** Use the `tailwind.config.base.js` from the root.
-- **Animations:** Prefer `tailwindcss-animate` for consistent transitions.
+Components must be "Ejection-Ready":
 
-## 7. AI WORKFLOW CHEAT SHEET
-When asked to perform a task, follow this sequence:
-1. **Analyze:** Check the existing `shared/utils` for existing logic.
-2. **Generate:** Run Nx generators:
-    - `npx nx g @nx/angular:library libs/angular/[name] --standalone`
-    - `npx nx g @nx/vue:library libs/vue/[name]`
-3. **Draft:** Implement the logic in Angular first (Signals), then mirror to Vue.
-4. **Test:** Configure and write Cypress tests immediately.
-5. **Document:** Update the Showcase App to include the new component.
+1. **Self-Containment:** Styles reside in `[name].component.css` or scoped blocks. Use Tailwind `@apply` for complex utility compositions.
+2. **Dependency Declaration:** Explicitly document external peer dependencies (e.g., `lucide-angular`, `clsx`) in the library's `README.md`.
+3. **Import Resolution:** All components depend on `@inzforge/shared/utils`. When generating blueprints for external use, provide instructions to resolve these to local relative paths.
+4. **Theme Alignment:** Reference CSS variables defined in `libs/shared/utils/src/lib/theme.css`.
 
-## 8. FORBIDDEN PATTERNS
-- **NO legacy RxJS** where Signals can be used (Angular).
-- **NO Options API** (Vue).
-- **NO `any` types.** Everything must be strictly typed.
-- **NO hardcoded hex colors.** Use the `inz` token system.
-- **NO mixing of components.** A `Button` cannot import a `Card` directly; they must remain standalone.
+## 6. TESTING MANDATE
+
+Every component must satisfy two testing layers:
+
+- **Cypress Component Testing:** Located within the library. Focus on internal logic, ARIA attribute correctness, and keyboard navigation (`Tab`, `Space`, `Enter`, `Esc`).
+- **Playwright E2E:** Located in `apps/[app]-e2e`. Focus on cross-browser rendering (WebKit, Firefox, Chromium) within the Showcase App.
+
+## 7. CLI COMMANDS FOR AGENTS
+
+Agents must use these commands to maintain workspace integrity. Do not use `serve` commands.
+
+### Library Generation
+
+```bash
+# Angular Component Lib (Standalone)
+npx nx g @nx/angular:library libs/angular/[source]/[name] --directory=libs/angular/[source]/[name] --standalone --unitTestRunner=vitest
+
+# Vue Component Lib
+npx nx g @nx/vue:library libs/vue/[source]/[name] --directory=libs/vue/[source]/[name] --unitTestRunner=vitest
+```
+
+### Verification & Testing
+
+```bash
+# Run Vitest Unit Tests
+npx nx test [project-name]
+
+# Run Cypress Component Tests
+npx nx component-test [project-name]
+
+# Run Playwright E2E Tests
+npx nx e2e [app-name]-e2e
+
+# Linting
+npx nx lint [project-name]
+```
+
+## 8. STYLING & TAILWIND 4 RULES
+
+- **Tokens:** Map Tailwind classes to CSS variables found in `theme.css` (e.g., `bg-[var(--inz-primary)]`).
+- **Dynamic Classes:** Always use the `cn()` utility from `@inzforge/shared/utils` for conditional class joining.
+- **Animations:** Use `tailwindcss-animate` for all transition/state-change logic.
+
+## 9. FORBIDDEN PATTERNS
+
+- **NO `any`:** All props, inputs, and state must be strictly typed.
+- **NO mixing:** Components must remain standalone. An `inz-accordion` cannot import an `inz-button` library; it must remain self-contained or use content projection.
+- **NO Hardcoded Hex:** All colors must reference the `inz` token system or Tailwind's semantic palette.
+- **NO legacy RxJS:** Do not use `BehaviorSubject` or `Observable` for state that can be handled by Angular Signals or Vue Refs.
 
 ---
-**Agent Note:** You are operating in **2025 Standard Mode**. Efficiency, portability, and "inz"-centric branding are your highest priorities.
+**Agent Note:** You are operating in **2025 Modern Engineering Mode**. Prioritize portability, accessibility, and strict adherence to the Signal/Composition reactivity models.

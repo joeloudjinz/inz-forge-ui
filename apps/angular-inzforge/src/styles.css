@@ -1,0 +1,13 @@
+/* Import Tailwind v4 core */
+@import "tailwindcss";
+
+/* Import the shared theme for the whole app */
+@import "../../../libs/shared/utils/src/lib/theme.css";
+
+@plugin "tailwindcss-animate"; /* Load the plugin here */
+
+
+/* Define your InzForge theme variables */
+@layer base {
+  /* Override variables here if needed, but do not use raw numbers */
+}

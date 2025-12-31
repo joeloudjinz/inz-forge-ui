@@ -1,0 +1,39 @@
+<div [class]="containerClasses()" class="inz-accordion-container">
+  @for (item of items(); track $index) {
+    <!--
+      name attr: Modern HTML feature.
+      If 'exclusive' is true, sharing the same name ensures only one opens at a time.
+    -->
+    <details
+      class="group [&_summary::-webkit-details-marker]:hidden"
+      [attr.open]="item.isExpandedByDefault ? '' : null"
+      [attr.name]="exclusive() ? groupName() : null">
+
+      <summary [class]="summaryClasses()" class="inz-accordion-summary" tabindex="0">
+        <span class="flex items-center gap-2">
+          @if (item.iconClass) {
+            <i [class]="cn('size-5 shrink-0', item.iconClass)"></i>
+          }
+          @if (item.iconComponent) {
+            <span class="size-5 shrink-0 flex items-center justify-center" [innerHTML]="item.iconComponent"></span>
+          }
+          <span>{{ item.title }}</span>
+        </span>
+
+        <!-- Right Side: Chevron -->
+        <svg
+          class="size-5 shrink-0 transition-transform duration-300 group-open:-rotate-180 ltr:ml-auto rtl:mr-auto"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+
+      <div [class]="contentClasses()" class="inz-accordion-content">
+        <p>{{ item.description }}</p>
+      </div>
+    </details>
+  }
+</div>
