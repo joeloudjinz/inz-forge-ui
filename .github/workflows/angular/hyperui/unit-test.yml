@@ -6,9 +6,9 @@ on:
   # Trigger the workflow on 'push' events
   push:
     branches:
-      # 1. Trigger when code is merged into the 'main' branch
-      # (Merging a PR results in a push to main)
+      # 1. Trigger when code is merged into the 'main' and 'dev' branches
       - 'main'
+      - 'dev'
 
       # 2. Trigger when pushing commits to any branch containing "components/hyperui"
       # The '**' acts as a wildcard ensuring it matches regardless of prefixes like 'feature/' or 'fix/'

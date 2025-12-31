@@ -6,8 +6,9 @@ on:
   # Trigger the workflow on 'push' events
   push:
     branches:
-      # 1. Trigger when code is merged into the 'main' branch
+      # 1. Trigger when code is merged into the 'main' and 'dev' branches
       - 'main'
+      - 'dev'
 
       # 2. Trigger when pushing commits to any branch containing "components/hyperui"
       - '**components/hyperui**'
