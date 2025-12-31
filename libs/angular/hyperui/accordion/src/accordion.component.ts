@@ -33,7 +33,7 @@ export class InzForgeHyperUiAccordionComponent {
     const base = 'w-full';
     switch (this.mode()) {
       case InzForgeHyperUiAccordionModes.divided:
-        return cn(base, '-mx-4 -my-2 space-y-0 divide-y divide-gray-200 dark:divide-gray-700');
+        return cn(base, '-mx-4 -my-2 space-y-0 divide-y');
       case InzForgeHyperUiAccordionModes.compact:
         return cn(base, 'space-y-1');
       case InzForgeHyperUiAccordionModes.simple:
@@ -50,22 +50,22 @@ export class InzForgeHyperUiAccordionComponent {
     switch (this.mode()) {
       case InzForgeHyperUiAccordionModes.divided:
         // Divided: No background, just text color changes
-        return cn(base, 'rounded-none px-4 py-3 text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-200');
+        return cn(base, 'border-b border-gray-200 rounded-none px-4 py-3 text-gray-900 hover:text-gray-700');
 
       case InzForgeHyperUiAccordionModes.compact:
         // Compact: Smaller padding, smaller text, background changes
-        return cn(base, 'rounded px-3 py-2 text-sm text-gray-900 bg-white hover:bg-gray-50 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 dark:border-gray-700');
+        return cn(base, 'rounded px-3 py-2 text-sm text-gray-900 bg-white hover:bg-gray-50');
 
       case InzForgeHyperUiAccordionModes.simple:
       default:
         // Simple: Standard padding, border, background
-        return cn(base, 'border border-gray-200 bg-white px-4 py-3 text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800');
+        return cn(base, 'border border-gray-200 bg-white px-4 py-3 text-gray-900 hover:bg-gray-50');
     }
   });
 
   // Content (Body) Classes
   contentClasses = computed(() => {
-    const base = 'text-gray-700 dark:text-gray-200';
+    const base = 'text-gray-700';
     switch (this.mode()) {
       case InzForgeHyperUiAccordionModes.compact:
         return cn(base, 'p-3');

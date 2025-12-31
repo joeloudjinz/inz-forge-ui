@@ -1,4 +1,4 @@
-<div [class]="containerClasses()">
+<div [class]="containerClasses()" class="inz-accordion-container">
   @for (item of items(); track $index) {
     <!--
       name attr: Modern HTML feature.
@@ -9,7 +9,7 @@
       [attr.open]="item.isExpandedByDefault ? '' : null"
       [attr.name]="exclusive() ? groupName() : null">
 
-      <summary [class]="summaryClasses()">
+      <summary [class]="summaryClasses()" class="inz-accordion-summary">
         <span class="flex items-center gap-2">
           @if (item.iconClass) {
             <i [class]="cn('size-5 shrink-0', item.iconClass)"></i>
@@ -31,7 +31,7 @@
         </svg>
       </summary>
 
-      <div [class]="contentClasses()">
+      <div [class]="contentClasses()" class="inz-accordion-content">
         <p>{{ item.description }}</p>
       </div>
     </details>
