@@ -1,13 +1,27 @@
 ## Project Folder Structure
-Generated on: Wed Dec 31 15:55:13 CET 2025
+Generated on: Wed Dec 31 19:02:29 CET 2025
 *(Respected .gitignore rules)*
 
 ```text
 inz-forge-ui/
+├── .editorconfig
+├── .github/
+│   └── workflows/
+│       └── angular/
+│           └── hyperui/
+│               ├── component-test.yml
+│               └── unit-test.yml
+├── .gitignore
+├── .nx/
+├── .prettierignore
+├── .prettierrc
+├── .vscode/
+│   └── extensions.json
 ├── PROJECT-CONTEXT.md
 ├── README.md
 ├── apps/
 │   ├── angular-inzforge/
+│   │   ├── .postcssrc.json
 │   │   ├── eslint.config.mjs
 │   │   ├── project.json
 │   │   ├── public/
@@ -76,11 +90,13 @@ inz-forge-ui/
 │   │       ├── how-to-use-theme-css-file.md
 │   │       └── shared-theme-syntax.md
 │   └── reports/
+│       ├── integrating-and-configuring-test-frameworks-for-accordion-component.md
 │       └── integrating-tailwindcss-with-angular-app.md
 ├── eslint.config.mjs
 ├── libs/
 │   ├── angular/
 │   │   └── hyperui/
+│   │       ├── README.md
 │   │       └── accordion/
 │   │           ├── README.md
 │   │           ├── cypress/
@@ -97,11 +113,12 @@ inz-forge-ui/
 │   │           │   ├── accordion-item.model.ts
 │   │           │   ├── accordion-modes.enum.ts
 │   │           │   ├── accordion.component.css
-│   │           │   ├── accordion.component.cy.ts
 │   │           │   ├── accordion.component.html
-│   │           │   ├── accordion.component.spec.ts
 │   │           │   ├── accordion.component.ts
-│   │           │   ├── index.ts
+│   │           │   └── index.ts
+│   │           ├── tests/
+│   │           │   ├── accordion.component.cy.ts
+│   │           │   ├── accordion.component.spec.ts
 │   │           │   └── test-setup.ts
 │   │           ├── tsconfig.cy.json
 │   │           ├── tsconfig.json
