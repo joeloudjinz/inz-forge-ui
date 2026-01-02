@@ -1,5 +1,5 @@
 ## Project Folder Structure
-Generated on: Wed Dec 31 19:34:45 CET 2025
+Generated on: Fri Jan  2 20:26:47 CET 2026
 *(Respected .gitignore rules)*
 
 ```text
@@ -53,9 +53,13 @@ inz-forge-ui/
 │   │   │   │           │   └── dark-rtl-buttons-group.component.ts
 │   │   │   │           ├── page-headline/
 │   │   │   │           │   └── page-headline.component.ts
-│   │   │   │           └── showcase-container/
-│   │   │   │               ├── showcase-container.component.ts
-│   │   │   │               └── showcase-container.service.ts
+│   │   │   │           ├── showcase-container/
+│   │   │   │           │   ├── showcase-container.component.ts
+│   │   │   │           │   └── showcase-container.service.ts
+│   │   │   │           ├── simple-animated-text-link/
+│   │   │   │           │   └── simple-animated-text-link.component.ts
+│   │   │   │           └── source-code-link/
+│   │   │   │               └── source-code-link.component.ts
 │   │   │   ├── index.html
 │   │   │   ├── main.ts
 │   │   │   └── styles.css
@@ -87,10 +91,13 @@ inz-forge-ui/
 │   │   └── utils/
 │   │       ├── how-to-use-theme-css-file.md
 │   │       └── shared-theme-syntax.md
+│   ├── prompts/
+│   │   └── my-swe-assistant-pro.md
 │   └── reports/
 │       ├── integrating-and-configuring-test-frameworks-for-accordion-component.md
 │       └── integrating-tailwindcss-with-angular-app.md
 ├── eslint.config.mjs
+├── file-context-packer.script.sh
 ├── libs/
 │   ├── angular/
 │   │   └── hyperui/
