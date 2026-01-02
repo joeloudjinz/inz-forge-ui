@@ -1,0 +1,96 @@
+# ==============================================================================
+# Workflow Name: Monorepo - Component Tests
+# Description: Handles Cypress Component Testing for ALL projects in the workspace.
+#              It relies on Nx to determine which projects need testing.
+# ==============================================================================
+name: InzForge UI - Component Tests
+
+on:
+  # TRIGGER 1: Direct Pushes
+  # We run this on pushes to protected branches to ensure the merge was successful
+  # and the codebase is stable after integration.
+  push:
+    branches:
+      - 'main'
+      - 'dev'
+
+  # TRIGGER 2: Pull Requests
+  # We run this when a PR is opened or updated to catch bugs BEFORE merging.
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    branches:
+      - 'main'
+      - 'dev'
+
+  # TRIGGER 3: Manual
+  # Allows you to click "Run workflow" in GitHub UI for debugging purposes.
+  workflow_dispatch:
+
+# ==============================================================================
+# Concurrency Control
+# ==============================================================================
+# This creates a "Group" ID based on the workflow name and the branch/PR.
+# 'cancel-in-progress: true' ensures that if you push a new commit to a PR
+# while the test is still running, GitHub cancels the old run to save money.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  component-tests:
+    runs-on: ubuntu-latest
+
+    # ==========================================================================
+    # Optimization Logic (The "Dev -> Main" Skip)
+    # ==========================================================================
+    # This condition prevents redundant runs.
+    # 1. 'github.event_name != 'pull_request'': If it's a PUSH, always run.
+    # 2. '|| github.head_ref != 'dev'': If it IS a PR, run ONLY if the source
+    #    branch is NOT 'dev'.
+    #    WHY? Because 'dev' is already tested when you merged into it.
+    #    Merging 'dev' to 'main' doesn't need a re-run of the PR check.
+    if: github.event_name != 'pull_request' || github.head_ref != 'dev'
+
+    steps:
+      # 1. Check out the code.
+      # 'fetch-depth: 0' is CRITICAL for Nx. It needs the full git history
+      # to compare commits and determine what changed.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. Setup Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Install NPM dependencies (Clean Install)
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Install Cypress Binary explicitly (Required for component tests)
+      - name: Install Cypress Binary
+        run: npx cypress install
+
+      # 5. Calculate Nx SHAs (Base vs Head)
+      # This action automatically sets the NX_BASE and NX_HEAD environment variables.
+      # - On PRs: Base = origin/main (or target branch), Head = your commit.
+      # - On Push: Base = previous commit, Head = current commit.
+      - name: Setup Nx SHAs
+        uses: nrwl/nx-set-shas@v4
+
+      # 6. Run Affected Tests
+      # This is the "Brain" of the operation.
+      # --target=component-test: Runs the component-test target defined in project.json
+      # --parallel=3: Runs up to 3 projects simultaneously to speed up execution.
+      # --configuration=ci: Uses the 'ci' configuration (e.g., headless browser).
+      #
+      # SCENARIO HANDLER:
+      # - If you change 'libs/angular/hyperui': Runs HyperUI tests.
+      # - If you change 'libs/shared/utils': Runs HyperUI tests (because it depends on utils).
+      # - If you change 'apps/vue-app': Does NOTHING (HyperUI is not affected).
+      - name: Run Affected Component Tests
+        run: npx nx affected --target=component-test --parallel=3 --configuration=ci

@@ -1,8 +1,5 @@
 # InzForge HyperUI Components
 
-[![Unit Tests](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.unit-tests.yml/badge.svg)](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.unit-tests.yml)
-[![Component Tests](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.component-tests.yml/badge.svg)](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.component-tests.yml)
-
 A collection of Angular components based on the HyperUI design system.
 
 ## Components

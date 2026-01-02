@@ -1,5 +1,8 @@
 # InzForge UI
 
+[![Unit Tests](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.unit-tests.yml/badge.svg)](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.unit-tests.yml)
+[![Component Tests](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.component-tests.yml/badge.svg)](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.component-tests.yml)
+
 **A Source-First, Multi-Framework Blueprint Registry**
 
 Welcome to InzForge, a personal engineering lab and component registry dedicated to high-performance, standalone UI components. it is a Blueprint Registry (inspired by Shadcn/UI) where components are distributed as raw source code.
