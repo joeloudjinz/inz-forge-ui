@@ -11,6 +11,9 @@ import {
 import {
   InzAppDarkRtlButtonsGroupComponent
 } from "../../../shared/components/dark-rtl-buttons-group/dark-rtl-buttons-group.component";
+import {
+  InzForgeAppSourceCodeLinkComponent
+} from "../../../shared/components/source-code-link/source-code-link.component";
 
 @Component({
   selector: "inz-app-hyperui-accordion",
@@ -19,7 +22,8 @@ import {
     InzForgeHyperUiAccordionComponent,
     InzAppPageHeadlineComponent,
     InzForgeAppShowcaseContainerComponent,
-    InzAppDarkRtlButtonsGroupComponent
+    InzAppDarkRtlButtonsGroupComponent,
+    InzForgeAppSourceCodeLinkComponent
   ],
   providers: [
     InzForgeAppShowcaseContainerService

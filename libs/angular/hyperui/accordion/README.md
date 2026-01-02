@@ -17,6 +17,7 @@ An Angular implementation of the HyperUI accordion component with multiple style
   - [Accordion Item Model](#accordion-item-model)
   - [Modes](#modes)
 - [Styling](#styling)
+- [Dark Mode](#dark-mode)
 - [Accessibility](#accessibility)
 - [Examples](#examples)
 
@@ -41,7 +42,7 @@ This component follows the "source-first" blueprint approach. Copy the source fi
 ### Basic Usage
 
 ```typescript
-import { InzForgeHyperUiAccordionComponent, InzForgeHyperUiAccordionModes } from '@inz-forge-ui/accordion';
+import {InzForgeHyperUiAccordionComponent, InzForgeHyperUiAccordionModes} from '@inz-forge-ui/accordion';
 
 // Example data
 const accordionItems = [
@@ -57,6 +58,7 @@ const accordionItems = [
 ```
 
 ```html
+
 <inz-hyperui-accordion
   [items]="accordionItems"
   [mode]="InzForgeHyperUiAccordionModes.simple">
@@ -68,7 +70,9 @@ const accordionItems = [
 The accordion supports three different visual modes:
 
 #### Simple Mode (Default)
+
 ```html
+
 <inz-hyperui-accordion
   [items]="accordionItems"
   [mode]="InzForgeHyperUiAccordionModes.simple">
@@ -76,7 +80,9 @@ The accordion supports three different visual modes:
 ```
 
 #### Divided Mode
+
 ```html
+
 <inz-hyperui-accordion
   [items]="accordionItems"
   [mode]="InzForgeHyperUiAccordionModes.divided">
@@ -84,7 +90,9 @@ The accordion supports three different visual modes:
 ```
 
 #### Compact Mode
+
 ```html
+
 <inz-hyperui-accordion
   [items]="accordionItems"
   [mode]="InzForgeHyperUiAccordionModes.compact">
@@ -96,6 +104,7 @@ The accordion supports three different visual modes:
 To ensure only one accordion item is open at a time, use the `exclusive` input:
 
 ```html
+
 <inz-hyperui-accordion
   [items]="accordionItems"
   [mode]="InzForgeHyperUiAccordionModes.simple"
@@ -156,11 +165,11 @@ const accordionItems = [
 
 ### Inputs
 
-| Input | Type | Default | Description |
-|-------|------|---------|-------------|
-| `items` | `InzForgeHyperUiAccordionItemModel[]` | - | Array of accordion items with title, description, and optional properties |
-| `mode` | `InzForgeHyperUiAccordionModes` | `InzForgeHyperUiAccordionModes.simple` | Accordion mode (simple, divided, compact) |
-| `exclusive` | `boolean` | `false` | When true, only one item can be open at a time |
+| Input       | Type                                  | Default                                | Description                                                               |
+|-------------|---------------------------------------|----------------------------------------|---------------------------------------------------------------------------|
+| `items`     | `InzForgeHyperUiAccordionItemModel[]` | -                                      | Array of accordion items with title, description, and optional properties |
+| `mode`      | `InzForgeHyperUiAccordionModes`       | `InzForgeHyperUiAccordionModes.simple` | Accordion mode (simple, divided, compact)                                 |
+| `exclusive` | `boolean`                             | `false`                                | When true, only one item can be open at a time                            |
 
 ### Accordion Item Model
 
@@ -211,6 +220,23 @@ The component uses Tailwind CSS classes with CSS variables for consistent stylin
 }
 ```
 
+## Dark Mode
+
+To enable dark mode for the accordion component, you'll have to apply `dark` class to the component tag:
+
+```typescript
+// Example using a theme service
+@Component({
+  selector: 'app-example',
+  template: `
+    <inz-hyperui-accordion [items]="accordionItems" [class.dark]="isDarkMode"></inz-hyperui-accordion>
+  `
+})
+export class ExampleComponent {
+  isDarkMode = true; // or false to disable dark mode
+}
+```
+
 ## Accessibility
 
 The component includes proper ARIA attributes and keyboard navigation support:
@@ -227,8 +253,8 @@ The component includes proper ARIA attributes and keyboard navigation support:
 ### Complete Example with All Features
 
 ```typescript
-import { Component } from '@angular/core';
-import { InzForgeHyperUiAccordionComponent, InzForgeHyperUiAccordionModes, InzForgeHyperUiAccordionItemModel } from '@inz-forge-ui/accordion';
+import {Component} from '@angular/core';
+import {InzForgeHyperUiAccordionComponent, InzForgeHyperUiAccordionModes, InzForgeHyperUiAccordionItemModel} from '@inz-forge-ui/accordion';
 
 @Component({
   selector: 'app-example',
