@@ -1,14 +1,20 @@
 import {Component, computed, input} from "@angular/core";
+import {InzForgeAppSimpleAnimatedTextLink} from "../simple-animated-text-link/simple-animated-text-link.component";
 
 @Component({
   selector: "inz-app-showcase-component-source-code-link",
+  imports: [
+    InzForgeAppSimpleAnimatedTextLink
+  ],
   template: `
     @if (link()) {
       <div class="py-inz-3">
         <div class="flex justify-between">
           <p>
             You can find the source code on
-            <a [href]="full()" class="hover:font-bold hover:underline transition-all fade-out duration-500" target="_blank">GitHub</a>
+            <inz-app-simple-simple-animated-text-link [link]="full()">
+              GitHub
+            </inz-app-simple-simple-animated-text-link>
           </p>
         </div>
       </div>
