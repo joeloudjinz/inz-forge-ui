@@ -1,0 +1,53 @@
+# ==============================================================================
+# Workflow Name: Monorepo - Unit Tests
+# Description: Handles Unit Testing (Jest/Vitest) for ALL projects.
+# ==============================================================================
+name: InzForge UI - Unit Tests
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'dev'
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    branches:
+      - 'main'
+      - 'dev'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    # Logic: Run on Pushes, or run on PRs (unless it's the dev->main PR)
+    if: github.event_name != 'pull_request' || github.head_ref != 'dev'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Note: We do NOT need 'npx cypress install' here because unit tests
+      # (usually Jest/Vitest) don't use the Cypress binary.
+
+      - name: Setup Nx SHAs
+        uses: nrwl/nx-set-shas@v4
+
+      # Run Unit Tests
+      # Runs 'test' target for any library/app affected by the changes.
+      - name: Run Affected Unit Tests
+        run: npx nx affected --target=test --parallel=3
