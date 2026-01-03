@@ -24,7 +24,6 @@ describe('InzForgeHyperUiAccordionComponent', () => {
     fixture = TestBed.createComponent(InzForgeHyperUiAccordionComponent);
     component = fixture.componentInstance;
 
-    // FIX: Use setInput for Signal Inputs
     fixture.componentRef.setInput('items', mockItems);
     fixture.detectChanges();
   });
@@ -68,7 +67,6 @@ describe('InzForgeHyperUiAccordionComponent', () => {
 
   describe('Icon Rendering Logic', () => {
     it('should not render custom icons when not provided', () => {
-      // FIX: Scope selector to the content span, ignoring the Chevron SVG
       const contentIcons = fixture.nativeElement.querySelectorAll('.inz-accordion-summary > span > i');
       const componentIcons = fixture.nativeElement.querySelectorAll('.inz-accordion-summary > span > span.size-5');
 
