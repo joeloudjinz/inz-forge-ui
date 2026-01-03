@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@inz-forge-ui/utils": ["libs/shared/utils/src/index.ts"],
-      "@inz-forge-ui/accordion": ["libs/angular/hyperui/accordion/src/index.ts"]
+      "@inz-forge-ui/angular/hyperui/accordion": ["libs/angular/hyperui/accordion/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
