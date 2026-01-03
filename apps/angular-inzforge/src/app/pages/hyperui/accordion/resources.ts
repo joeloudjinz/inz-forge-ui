@@ -1,4 +1,4 @@
-import {InzForgeHyperUiAccordionItemModel} from "@inz-forge-ui/accordion";
+import {InzForgeHyperUiAccordionItemModel} from "@inz-forge-ui/angular/hyperui/accordion";
 
 export const AccordionItems: InzForgeHyperUiAccordionItemModel[] = [
   {

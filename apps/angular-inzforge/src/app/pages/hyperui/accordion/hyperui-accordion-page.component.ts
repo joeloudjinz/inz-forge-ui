@@ -1,5 +1,4 @@
 import {Component, inject, signal} from "@angular/core";
-import {InzForgeHyperUiAccordionComponent, InzForgeHyperUiAccordionModes} from "@inz-forge-ui/accordion";
 import {AccordionItems} from "./resources";
 import {InzAppPageHeadlineComponent} from "../../../shared/components/page-headline/page-headline.component";
 import {
@@ -14,6 +13,10 @@ import {
 import {
   InzForgeAppSourceCodeLinkComponent
 } from "../../../shared/components/source-code-link/source-code-link.component";
+import {
+  InzForgeHyperUiAccordionComponent,
+  InzForgeHyperUiAccordionModes
+} from "@inz-forge-ui/angular/hyperui/accordion";
 
 @Component({
   selector: "inz-app-hyperui-accordion",
@@ -23,7 +26,8 @@ import {
     InzAppPageHeadlineComponent,
     InzForgeAppShowcaseContainerComponent,
     InzAppDarkRtlButtonsGroupComponent,
-    InzForgeAppSourceCodeLinkComponent
+    InzForgeAppSourceCodeLinkComponent,
+    InzForgeHyperUiAccordionComponent
   ],
   providers: [
     InzForgeAppShowcaseContainerService
