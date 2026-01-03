@@ -1,17 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InzForgeHyperUiAccordionComponent } from '@inz-forge-ui/accordion';
-import { InzForgeHyperUiAccordionItemModel } from '@inz-forge-ui/accordion';
-import { InzForgeHyperUiAccordionModes } from '@inz-forge-ui/accordion';
-import { vi } from 'vitest';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {
+  InzForgeHyperUiAccordionComponent,
+  InzForgeHyperUiAccordionItemModel,
+  InzForgeHyperUiAccordionModes
+} from '../src';
+import {vi} from 'vitest';
 
 describe('InzForgeHyperUiAccordionComponent', () => {
   let component: InzForgeHyperUiAccordionComponent;
   let fixture: ComponentFixture<InzForgeHyperUiAccordionComponent>;
 
   const mockItems: InzForgeHyperUiAccordionItemModel[] = [
-    { title: 'Q1', description: 'Desc 1', isExpandedByDefault: false },
-    { title: 'Q2', description: 'Desc 2', isExpandedByDefault: true },
-    { title: 'Q3', description: 'Desc 3', isExpandedByDefault: false }
+    {title: 'Q1', description: 'Desc 1', isExpandedByDefault: false},
+    {title: 'Q2', description: 'Desc 2', isExpandedByDefault: true},
+    {title: 'Q3', description: 'Desc 3', isExpandedByDefault: false}
   ];
 
   beforeEach(async () => {
@@ -22,7 +24,6 @@ describe('InzForgeHyperUiAccordionComponent', () => {
     fixture = TestBed.createComponent(InzForgeHyperUiAccordionComponent);
     component = fixture.componentInstance;
 
-    // FIX: Use setInput for Signal Inputs
     fixture.componentRef.setInput('items', mockItems);
     fixture.detectChanges();
   });
@@ -66,7 +67,6 @@ describe('InzForgeHyperUiAccordionComponent', () => {
 
   describe('Icon Rendering Logic', () => {
     it('should not render custom icons when not provided', () => {
-      // FIX: Scope selector to the content span, ignoring the Chevron SVG
       const contentIcons = fixture.nativeElement.querySelectorAll('.inz-accordion-summary > span > i');
       const componentIcons = fixture.nativeElement.querySelectorAll('.inz-accordion-summary > span > span.size-5');
 
@@ -75,7 +75,7 @@ describe('InzForgeHyperUiAccordionComponent', () => {
     });
 
     it('should render icon class when provided', () => {
-      const itemsWithIcons = [{ ...mockItems[0], iconClass: 'test-icon-class' }];
+      const itemsWithIcons = [{...mockItems[0], iconClass: 'test-icon-class'}];
       fixture.componentRef.setInput('items', itemsWithIcons);
       fixture.detectChanges();
 
@@ -105,7 +105,7 @@ describe('InzForgeHyperUiAccordionComponent', () => {
       const focusSpy = vi.spyOn(summaries[1], 'focus');
 
       // Trigger Keydown on first item
-      const event = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true });
+      const event = new KeyboardEvent('keydown', {key: 'ArrowDown', bubbles: true});
       summaries[0].dispatchEvent(event);
 
       fixture.detectChanges();

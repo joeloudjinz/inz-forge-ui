@@ -25,7 +25,7 @@ describe('Accordion Component', () => {
       componentProperties: { items: mockItems }
     });
 
-    // FIX: Focus the first summary directly instead of relying on flaky 'Tab' behavior
+    // Focus the first summary directly instead of relying on flaky 'Tab' behavior
     cy.get('summary').first().focus();
     cy.get('summary').first().should('be.focused');
 

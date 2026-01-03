@@ -1,5 +1,5 @@
 {
-  "name": "accordion",
+  "name": "ng-hyperui-accordion",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/angular/hyperui/accordion/src",
   "prefix": "inz",
