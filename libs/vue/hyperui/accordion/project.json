@@ -1,0 +1,10 @@
+{
+  "name": "vue-hyperui-accordion",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/vue/hyperui/accordion/src",
+  "projectType": "library",
+  "prefix": "inz",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project accordion --web",
+  "targets": {}
+}
