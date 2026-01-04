@@ -1,5 +1,5 @@
 ## Project Folder Structure
-Generated on: Sun Jan  4 08:54:36 CET 2026
+Generated on: Sun Jan  4 10:49:20 CET 2026
 *(Respected .gitignore rules)*
 
 ```text
@@ -23,7 +23,7 @@ inz-forge-ui/
 │   │   ├── eslint.config.mjs
 │   │   ├── project.json
 │   │   ├── public/
-│   │   │   └── favicon.ico
+│   │   │   └── joeinz-baw-logo.svg
 │   │   ├── src/
 │   │   │   ├── app/
 │   │   │   │   ├── app.config.ts
@@ -71,6 +71,8 @@ inz-forge-ui/
 │       ├── eslint.config.mjs
 │       ├── index.html
 │       ├── project.json
+│       ├── public/
+│       │   └── joeinz-baw-logo.svg
 │       ├── src/
 │       │   ├── app/
 │       │   │   ├── App.vue
@@ -161,6 +163,12 @@ inz-forge-ui/
 │       └── hyperui/
 │           └── accordion/
 │               ├── README.md
+│               ├── cypress/
+│               │   ├── screenshots/
+│               │   └── support/
+│               │       ├── component-index.html
+│               │       └── component.ts
+│               ├── cypress.config.ts
 │               ├── eslint.config.mjs
 │               ├── package.json
 │               ├── project.json
@@ -173,6 +181,7 @@ inz-forge-ui/
 │               ├── tests/
 │               │   ├── accordion.component.cy.ts
 │               │   └── accordion.spec.ts
+│               ├── tsconfig.cy.json
 │               ├── tsconfig.json
 │               ├── tsconfig.lib.json
 │               ├── tsconfig.spec.json
