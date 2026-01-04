@@ -1,5 +1,5 @@
 ## Project Folder Structure
-Generated on: Fri Jan  2 20:26:47 CET 2026
+Generated on: Sun Jan  4 08:54:36 CET 2026
 *(Respected .gitignore rules)*
 
 ```text
@@ -7,8 +7,8 @@ inz-forge-ui/
 ├── .editorconfig
 ├── .github/
 │   └── workflows/
-│       ├── angular.hyperui.component-tests.yml
-│       └── angular.hyperui.unit-tests.yml
+│       ├── component-tests.yml
+│       └── unit-tests.yml
 ├── .gitignore
 ├── .nx/
 ├── .prettierignore
@@ -67,25 +67,39 @@ inz-forge-ui/
 │   │   ├── tsconfig.app.json
 │   │   └── tsconfig.json
 │   └── vue-inzforge/
+│       ├── .postcssrc.json
 │       ├── eslint.config.mjs
 │       ├── index.html
 │       ├── project.json
 │       ├── src/
 │       │   ├── app/
-│       │   │   ├── App.spec.ts
 │       │   │   ├── App.vue
-│       │   │   └── NxWelcome.vue
+│       │   │   ├── components/
+│       │   │   │   ├── DarkRtlButtonsGroup.vue
+│       │   │   │   ├── Navbar.vue
+│       │   │   │   ├── PageHeadline.vue
+│       │   │   │   ├── ShowcaseContainer.vue
+│       │   │   │   ├── Sidebar.vue
+│       │   │   │   ├── SimpleAnimatedTextLink.vue
+│       │   │   │   └── SourceCodeLink.vue
+│       │   │   └── composables/
+│       │   │       └── useShowcaseContainer.ts
 │       │   ├── main.ts
 │       │   ├── router/
 │       │   │   └── index.ts
 │       │   ├── styles.css
 │       │   ├── views/
-│       │   │   ├── AboutView.vue
-│       │   │   └── HomeView.vue
+│       │   │   ├── HomeView.vue
+│       │   │   └── components/
+│       │   │       └── hyperui/
+│       │   │           └── accordion/
+│       │   │               ├── AccordionPage.vue
+│       │   │               └── resources.ts
 │       │   └── vue-shims.d.ts
+│       ├── tailwind.config.js
 │       ├── tsconfig.app.json
 │       ├── tsconfig.json
-│       └── vite.config.mts
+│       └── vite.config.ts
 ├── docs/
 │   ├── explanations/
 │   │   └── utils/
@@ -94,6 +108,7 @@ inz-forge-ui/
 │   ├── prompts/
 │   │   └── my-swe-assistant-pro.md
 │   └── reports/
+│       ├── ci-pipeline-stabilization-nx-node20-esm.md
 │       ├── integrating-and-configuring-test-frameworks-for-accordion-component.md
 │       └── integrating-tailwindcss-with-angular-app.md
 ├── eslint.config.mjs
@@ -129,22 +144,43 @@ inz-forge-ui/
 │   │           ├── tsconfig.json
 │   │           ├── tsconfig.lib.json
 │   │           ├── tsconfig.spec.json
-│   │           └── vite.config.mts
-│   └── shared/
-│       └── utils/
-│           ├── README.md
-│           ├── eslint.config.mjs
-│           ├── project.json
-│           ├── src/
-│           │   ├── index.ts
-│           │   └── lib/
-│           │       ├── theme.css
-│           │       └── utils.ts
-│           ├── tsconfig.json
-│           └── tsconfig.lib.json
+│   │           └── vite.config.ts
+│   ├── shared/
+│   │   └── utils/
+│   │       ├── README.md
+│   │       ├── eslint.config.mjs
+│   │       ├── project.json
+│   │       ├── src/
+│   │       │   ├── index.ts
+│   │       │   └── lib/
+│   │       │       ├── theme.css
+│   │       │       └── utils.ts
+│   │       ├── tsconfig.json
+│   │       └── tsconfig.lib.json
+│   └── vue/
+│       └── hyperui/
+│           └── accordion/
+│               ├── README.md
+│               ├── eslint.config.mjs
+│               ├── package.json
+│               ├── project.json
+│               ├── src/
+│               │   ├── InzHyperUiAccordion.vue
+│               │   ├── accordion-item.model.ts
+│               │   ├── accordion-modes.enum.ts
+│               │   ├── index.ts
+│               │   └── vue-shims.d.ts
+│               ├── tests/
+│               │   ├── accordion.component.cy.ts
+│               │   └── accordion.spec.ts
+│               ├── tsconfig.json
+│               ├── tsconfig.lib.json
+│               ├── tsconfig.spec.json
+│               └── vite.config.ts
 ├── nx.json
 ├── package-lock.json
 ├── package.json
 ├── tailwind.config.base.js
-└── tsconfig.base.json
+├── tsconfig.base.json
+└── vitest.workspace.ts
 ```
