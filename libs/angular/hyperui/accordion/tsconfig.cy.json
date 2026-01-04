@@ -7,10 +7,11 @@
       "node",
       "cypress-real-events"
     ],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "bundler"
   },
   "include": [
-    "tests/**/*.cy.ts",     // <--- ADD THIS
+    "tests/**/*.cy.ts",
     "cypress.config.ts",
     "cypress/**/*.ts",
     "**/*.d.ts"

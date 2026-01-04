@@ -93,4 +93,6 @@ jobs:
       # - If you change 'libs/shared/utils': Runs HyperUI tests (because it depends on utils).
       # - If you change 'apps/vue-app': Does NOTHING (HyperUI is not affected).
       - name: Run Affected Component Tests
-        run: npx nx affected --target=component-test --parallel=3 --configuration=ci
+        env:
+          NX_DAEMON: 'false' # Forces Nx to run in the current process, easier to debug
+        run: npx nx affected --target=component-test --parallel=1 --configuration=ci --verbose

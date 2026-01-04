@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true
+  },
+  "files": [],
+  "include": [
+    "cypress.config.ts",
+    "vite.config.ts"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.cy.json"
+    }
+  ],
+  "extends": "../../../../tsconfig.base.json",
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "moduleResolution": "node"
+    }
+  }
+}

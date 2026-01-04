@@ -1,0 +1,23 @@
+{
+  "name": "vue-hyperui-accordion",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/vue/hyperui/accordion/src",
+  "projectType": "library",
+  "prefix": "inz",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project accordion --web",
+  "targets": {
+    "component-test": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "libs/vue/hyperui/accordion/cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true,
+        "devServerTarget": ""
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
