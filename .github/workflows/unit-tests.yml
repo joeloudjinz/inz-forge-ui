@@ -50,4 +50,6 @@ jobs:
       # Run Unit Tests
       # Runs 'test' target for any library/app affected by the changes.
       - name: Run Affected Unit Tests
-        run: npx nx affected --target=test --parallel=3
+        env:
+          NX_DAEMON: 'false' # Forces Nx to run in the current process, easier to debug
+        run: npx nx affected --target=test --parallel=3 --verbose
