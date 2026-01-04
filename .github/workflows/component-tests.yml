@@ -95,4 +95,4 @@ jobs:
       - name: Run Affected Component Tests
         env:
           NX_DAEMON: 'false' # Forces Nx to run in the current process, easier to debug
-        run: npx nx affected --target=component-test --parallel=3 --configuration=ci --verbose
+        run: npx nx affected --target=component-test --parallel=1 --configuration=ci --verbose
