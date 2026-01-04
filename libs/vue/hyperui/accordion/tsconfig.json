@@ -10,14 +10,26 @@
     "resolveJsonModule": true
   },
   "files": [],
-  "include": ["vite.config.ts"],
+  "include": [
+    "cypress.config.ts",
+    "vite.config.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.lib.json"
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.cy.json"
     }
   ],
-  "extends": "../../../../tsconfig.base.json"
+  "extends": "../../../../tsconfig.base.json",
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "moduleResolution": "node"
+    }
+  }
 }
