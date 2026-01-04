@@ -59,7 +59,7 @@ import ShowcaseContainer from '../../../../app/components/ShowcaseContainer.vue'
 import {InzForgeHyperUiAccordionModes, InzHyperUiAccordion} from '@inz-forge-ui/vue/hyperui/accordion';
 import {AccordionItems} from './resources';
 
-const {isDarkModeOn, isRtlDirection} = useShowcaseContainer();
+const {isDarkModeOn} = useShowcaseContainer();
 
 // State for mode and exclusive toggle
 const mode = ref(InzForgeHyperUiAccordionModes.simple);
