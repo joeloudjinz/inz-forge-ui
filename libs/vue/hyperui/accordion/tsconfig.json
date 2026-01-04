@@ -10,7 +10,7 @@
     "resolveJsonModule": true
   },
   "files": [],
-  "include": ["vite.config.mts"],
+  "include": ["vite.config.ts"],
   "references": [
     {
       "path": "./tsconfig.lib.json"
