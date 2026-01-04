@@ -4,7 +4,7 @@
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
@@ -16,7 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "@inz-forge-ui/utils": ["libs/shared/utils/src/index.ts"],
-      "@inz-forge-ui/angular/hyperui/accordion": ["libs/angular/hyperui/accordion/src/index.ts"]
+      "@inz-forge-ui/angular/hyperui/accordion": [
+        "libs/angular/hyperui/accordion/src/index.ts"
+      ],
+      "@inz-forge-ui/vue/hyperui/accordion": [
+        "libs/vue/hyperui/accordion/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

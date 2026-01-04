@@ -1,7 +1,7 @@
 # InzForge UI
 
-[![Unit Tests](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.unit-tests.yml/badge.svg)](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.unit-tests.yml)
-[![Component Tests](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.component-tests.yml/badge.svg)](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/angular.hyperui.component-tests.yml)
+[![Unit Tests](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/unit-tests.yml)
+[![Component Tests](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/component-tests.yml/badge.svg)](https://github.com/joeloudjinz/inz-forge-ui/actions/workflows/component-tests.yml)
 
 **A Source-First, Multi-Framework Blueprint Registry**
 

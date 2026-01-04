@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../../../dist/out-tsc",
+    "types": ["cypress", "node"],
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src/**/*.vue",
+    "src/**/*.ts",
+    "tests/**/*.cy.ts",
+    "cypress/**/*.ts",
+    "cypress/**/*.css"
+  ]
+}

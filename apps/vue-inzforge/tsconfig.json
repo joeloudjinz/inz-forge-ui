@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "allowJs": true,
     "esModuleInterop": false,
@@ -6,15 +7,16 @@
     "strict": true,
     "jsx": "preserve",
     "jsxImportSource": "vue",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true
   },
   "files": [],
-  "include": [],
+  "include": [
+    "vite.config.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.app.json"
     }
-  ],
-  "extends": "../../tsconfig.base.json"
+  ]
 }
