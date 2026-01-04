@@ -1,7 +1,7 @@
 <template>
   <div
-    :class="containerClasses"
     class="inz-accordion-container"
+    :class="containerClasses"
     @keydown="handleKeydown"
   >
     <details
@@ -11,26 +11,35 @@
       :open="item.isExpandedByDefault ? true : undefined"
       :name="exclusive ? groupName : undefined"
     >
+      <!--
+        Class Merging Strategy:
+        1. :class="summaryClasses" -> Tailwind utilities (Layout, Spacing, Default Colors)
+        2. class="inz-accordion-summary" -> Applies the CSS Variables defined below
+      -->
       <summary :class="summaryClasses" class="inz-accordion-summary" tabindex="0">
         <span class="flex items-center gap-2">
-          <i v-if="item.iconClass" :class="cn('size-5 shrink-0', item.iconClass)"></i>
+          <i
+            v-if="item.iconClass"
+            :class="cn('size-5 shrink-0', item.iconClass)"
+            aria-hidden="true"
+          ></i>
           <span
             v-else-if="item.iconComponent"
-            class="size-5 shrink-0 flex items-center justify-center"
+            class="size-5 shrink-0 flex items-center justify-center [&>svg]:size-full"
             v-html="item.iconComponent"
           ></span>
           <span>{{ item.title }}</span>
         </span>
 
-        <!-- Right Side: Chevron -->
         <svg
           class="size-5 shrink-0 transition-transform duration-300 group-open:-rotate-180 ltr:ml-auto rtl:mr-auto"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          aria-hidden="true"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
         </svg>
       </summary>
 
@@ -42,10 +51,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue';
-import { InzForgeHyperUiAccordionItemModel } from './accordion-item.model';
-import { InzForgeHyperUiAccordionModes } from './accordion-modes.enum';
-import { cn } from '@inz-forge-ui/utils';
+import {computed, useId} from 'vue';
+import {cn} from '@inz-forge-ui/utils';
+import {type InzForgeHyperUiAccordionItemModel} from './accordion-item.model';
+import {InzForgeHyperUiAccordionModes} from './accordion-modes.enum';
 
 interface Props {
   items: InzForgeHyperUiAccordionItemModel[];
@@ -54,14 +63,19 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  mode: () => InzForgeHyperUiAccordionModes.simple,
+  mode: InzForgeHyperUiAccordionModes.simple,
   exclusive: false,
 });
 
-// Generate a unique name for the accordion group if exclusive mode is on
-const groupName = ref(`accordion-${Math.random().toString(36).substring(2, 9)}`);
+// Vue 3.5: Generates a unique, server-safe ID for the accordion group
+const groupId = useId();
+const groupName = computed(() => `accordion-group-${groupId}`);
 
-// Computed classes for container based on mode
+// Computed Layout Classes
+// keep standard Tailwind colors here (e.g., bg-white) to match the Angular implementation's
+// structure, but the CSS Variables in <style> will take precedence for the specific theming
+// due to the specific classes (inz-accordion-summary) being applied.
+
 const containerClasses = computed(() => {
   const base = 'w-full';
   switch (props.mode) {
@@ -75,27 +89,30 @@ const containerClasses = computed(() => {
   }
 });
 
-// Computed classes for summary (header) based on mode
 const summaryClasses = computed(() => {
-  const base = 'flex cursor-pointer items-center justify-between gap-4 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg';
+  const base =
+    'flex cursor-pointer items-center justify-between gap-4 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg';
 
   switch (props.mode) {
     case InzForgeHyperUiAccordionModes.divided:
-      // Divided: No background, just text color changes
-      return cn(base, 'border-b border-gray-200 rounded-none px-4 py-3 text-gray-900 hover:text-gray-700');
-
+      return cn(
+        base,
+        'border-b border-gray-200 rounded-none px-4 py-3 text-gray-900 hover:text-gray-700'
+      );
     case InzForgeHyperUiAccordionModes.compact:
-      // Compact: Smaller padding, smaller text, background changes
-      return cn(base, 'rounded px-3 py-2 text-sm text-gray-900 bg-white hover:bg-gray-50');
-
+      return cn(
+        base,
+        'rounded px-3 py-2 text-sm text-gray-900 bg-white hover:bg-gray-50'
+      );
     case InzForgeHyperUiAccordionModes.simple:
     default:
-      // Simple: Standard padding, border, background
-      return cn(base, 'border border-gray-200 bg-white px-4 py-3 text-gray-900 hover:bg-gray-50');
+      return cn(
+        base,
+        'border border-gray-200 bg-white px-4 py-3 text-gray-900 hover:bg-gray-50'
+      );
   }
 });
 
-// Computed classes for content (body) based on mode
 const contentClasses = computed(() => {
   const base = 'text-gray-700';
   switch (props.mode) {
@@ -109,7 +126,6 @@ const contentClasses = computed(() => {
   }
 });
 
-// Keyboard navigation handler
 const handleKeydown = (event: KeyboardEvent) => {
   const isNavigation = ['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key);
   if (!isNavigation) return;
@@ -117,11 +133,10 @@ const handleKeydown = (event: KeyboardEvent) => {
   const summary = (event.target as HTMLElement).closest('summary');
   if (!summary) return;
 
-  event.preventDefault(); // Prevent page scroll
+  event.preventDefault();
 
-  const summaries = Array.from(
-    event.currentTarget?.querySelectorAll('summary') || []
-  ) as HTMLElement[];
+  const container = event.currentTarget as HTMLElement;
+  const summaries = Array.from(container.querySelectorAll('summary')) as HTMLElement[];
   const index = summaries.indexOf(summary as HTMLElement);
 
   if (index === -1) return;
@@ -137,9 +152,8 @@ const handleKeydown = (event: KeyboardEvent) => {
 </script>
 
 <style scoped>
-/* Define CSS variables for light and dark mode */
 .inz-accordion-container {
-  /* Default (light mode) values */
+  /* Default (Light Mode) */
   --accordion-bg: #ffffff;
   --accordion-text: #2d3748;
   --accordion-border: #e2e8f0;
@@ -150,9 +164,15 @@ const handleKeydown = (event: KeyboardEvent) => {
   --accordion-content-text: #4a5568;
 }
 
-/* Dark mode values when .dark class is present */
-:root.dark .inz-accordion-container,
-.dark .inz-accordion-container {
+/*
+  Dark Mode Overrides, supports:
+  1. Global dark mode (class on html/body): :global(.dark) .inz-accordion-container
+  2. Local dark mode (class on this element): .inz-accordion-container.dark
+  3. Data attribute mode: [data-theme='dark']
+*/
+:global(.dark) .inz-accordion-container,
+.inz-accordion-container.dark,
+.inz-accordion-container:where([data-theme='dark']) {
   --accordion-bg: #1a202c;
   --accordion-text: #e2e8f0;
   --accordion-border: #4a5568;
