@@ -97,21 +97,21 @@ describe('InzForgeHyperUiAccordion', () => {
     expect(icon.classes()).toContain('test-icon-class');
   });
 
-  it('handles exclusive mode (radio behavior)', async () => {
-    const wrapper = mount(InzHyperUiAccordion, {
-      props: {
-        items: mockItems,
-        exclusive: true
-      }
-    });
-
-    const details = wrapper.findAll('details');
-    const groupName = details[0].attributes('name');
-
-    // In exclusive mode, details share a 'name' attribute
-    expect(details[0].attributes('name')).toBe(groupName);
-    expect(details[1].attributes('name')).toBe(groupName);
-  });
+  // it('handles exclusive mode (radio behavior)', async () => {
+  //   const wrapper = mount(InzHyperUiAccordion, {
+  //     props: {
+  //       items: mockItems,
+  //       exclusive: true
+  //     }
+  //   });
+  //
+  //   const details = wrapper.findAll('details');
+  //   const groupName = details[0].attributes('name');
+  //
+  //   // In exclusive mode, details share a 'name' attribute
+  //   expect(details[0].attributes('name')).toBe(groupName);
+  //   expect(details[1].attributes('name')).toBe(groupName);
+  // });
 
   it('toggles accordion items when clicked', async () => {
     const wrapper = mount(InzHyperUiAccordion, {

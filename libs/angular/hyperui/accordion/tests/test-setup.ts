@@ -1,14 +1,12 @@
-import '@angular/compiler'; // Required for JIT in tests
-import 'zone.js';
-import 'zone.js/testing';
-import { getTestBed } from '@angular/core/testing';
-import {
-  BrowserTestingModule,
-  platformBrowserTesting,
-} from '@angular/platform-browser/testing';
+import '@analogjs/vitest-angular/setup-snapshots';
+import { setupTestBed } from '@analogjs/vitest-angular/setup-testbed';
 
-// Initialize the Angular testing environment with the non-deprecated platform
-getTestBed().initTestEnvironment(
-  BrowserTestingModule,
-  platformBrowserTesting()
-);
+/**
+ * Initialize the Angular testing environment.
+ *
+ * Since Angular v21 is used, enable 'zoneless: true'.
+ * This removes the need for 'zone.js' and 'zone.js/testing' imports.
+ */
+setupTestBed({
+  zoneless: true,
+});
