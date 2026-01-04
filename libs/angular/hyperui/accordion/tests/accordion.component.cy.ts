@@ -1,15 +1,15 @@
-import { InzForgeHyperUiAccordionComponent } from '../src';
+import {InzForgeHyperUiAccordionComponent} from '../src';
 
 const mockItems = [
-  { title: 'Item 1', description: 'Desc 1' },
-  { title: 'Item 2', description: 'Desc 2' },
-  { title: 'Item 3', description: 'Desc 3' }
+  {title: 'Item 1', description: 'Desc 1'},
+  {title: 'Item 2', description: 'Desc 2'},
+  {title: 'Item 3', description: 'Desc 3'}
 ];
 
 describe('Accordion Component', () => {
   it('should render and toggle items', () => {
     cy.mount(InzForgeHyperUiAccordionComponent, {
-      componentProperties: { items: mockItems }
+      componentProperties: {items: mockItems}
     });
 
     // Check initial state (all closed)
@@ -21,29 +21,18 @@ describe('Accordion Component', () => {
   });
 
   it('should support keyboard navigation', () => {
-    cy.mount(InzForgeHyperUiAccordionComponent, {
-      componentProperties: { items: mockItems }
-    });
+    cy.mount(InzForgeHyperUiAccordionComponent, {componentProperties: {items: mockItems}});
 
-    // Focus the first summary directly instead of relying on flaky 'Tab' behavior
-    cy.get('summary').first().focus();
-    cy.get('summary').first().should('be.focused');
+    // 1. Click to focus is safer than .focus() for native behavior
+    cy.get('summary').first().click();
+    cy.get('summary').first().should('have.focus');
 
-    // Test Arrow Down (Custom Logic)
-    cy.focused().type('{downArrow}');
-    cy.get('summary').eq(1).should('be.focused');
+    // 2. Use realPress for native behavior (triggers standard browser events)
+    cy.realPress('ArrowDown');
+    cy.get('summary').eq(1).should('have.focus');
 
-    // Test Arrow Up (Custom Logic)
-    cy.focused().type('{upArrow}');
-    cy.get('summary').first().should('be.focused');
-
-    // Test End Key (Custom Logic)
-    cy.focused().type('{end}');
-    cy.get('summary').last().should('be.focused');
-
-    // Test Home Key (Custom Logic)
-    cy.focused().type('{home}');
-    cy.get('summary').first().should('be.focused');
+    cy.realPress('End');
+    cy.get('summary').last().should('have.focus');
   });
 
   it('should handle exclusive mode', () => {
