@@ -4,7 +4,7 @@
     "outDir": "../../../../dist/out-tsc",
     "types": ["cypress", "node"],
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node"
+    "moduleResolution": "bundler"
   },
   "include": [
     "src/**/*.vue",
