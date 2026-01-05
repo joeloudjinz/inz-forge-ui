@@ -5,9 +5,9 @@ import {InzForgeAppNavBarComponent} from "./shared/components/app-navbar/app-nav
 
 @Component({
   imports: [RouterModule, InzForgeAppSidebarComponent, InzForgeAppNavBarComponent],
-  selector: 'app-root',
+  standalone: true,
+  selector: 'inz-app-root',
   templateUrl: './app.html'
 })
 export class App {
-  protected title = 'InzForge UI - Angular Showroom';
 }
