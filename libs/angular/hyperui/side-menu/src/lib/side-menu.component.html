@@ -1,0 +1,50 @@
+<div [class]="containerClasses()">
+
+  <!-- Header / Logo Section -->
+  <div [class]="manager.isCompact() ? 'flex justify-center border-b border-gray-100 p-3' : 'px-4 py-6'">
+    @if (manager.logo(); as l) {
+      <div [class]="manager.isCompact() ? 'size-10' : 'h-24'"
+           class="grid place-content-center rounded-lg bg-gray-100 text-xs text-gray-600 font-bold overflow-hidden text-center">
+        <h1 [class]="!manager.isCompact() ? 'text-xl' : 'text-sm'">
+          {{ manager.isCompact() ? (l.initials || 'L') : (l.text || 'Logo') }}
+        </h1>
+        @if (!!l.subtitle && !manager.isCompact()) {
+          <span class="text-xs font-light pt-2">{{l.subtitle}}</span>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- Main Navigation Scrollable Area -->
+  <div class="flex-1" [class.px-2]="manager.isCompact()" [class.overflow-y-auto]="!manager.isCompact()">
+    <ul class="space-y-1" [class.mt-6]="!manager.isCompact()" [class.pt-4]="manager.isCompact()">
+      @for (item of manager.items(); track $index) {
+        <li>
+          @if (item.children && item.children.length > 0) {
+            <inz-side-menu-group [item]="item" />
+          } @else {
+            <inz-side-menu-link [item]="item" />
+          }
+        </li>
+      }
+    </ul>
+  </div>
+
+  <!-- Footer / Profile Section -->
+  <div class="mt-auto">
+    <!-- Optional Footer Links -->
+    @if (manager.footerItems().length > 0) {
+      <div class="border-t border-gray-100 bg-white" [class.p-2]="manager.isCompact()">
+        @for (item of manager.footerItems(); track $index) {
+          <inz-side-menu-link [item]="item" />
+        }
+      </div>
+    }
+
+    <!-- Profile Component -->
+    @if (manager.profile(); as p) {
+      <inz-side-menu-profile [profile]="p" />
+    }
+  </div>
+
+</div>
