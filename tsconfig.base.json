@@ -21,6 +21,9 @@
       ],
       "@inz-forge-ui/vue/hyperui/accordion": [
         "libs/vue/hyperui/accordion/src/index.ts"
+      ],
+      "@inz-forge-ui/angular/hyperui/side-menu": [
+        "libs/angular/hyperui/side-menu/src/index.ts"
       ]
     }
   },

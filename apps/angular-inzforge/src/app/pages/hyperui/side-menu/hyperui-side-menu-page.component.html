@@ -1,0 +1,38 @@
+<inz-app-page-headline
+  title="HyperUI Side Menu"
+  subtitle="Angular implementation of the HyperUI side menu"
+/>
+
+<inz-app-showcase-component-source-code-link link="hyperui/side-menu"/>
+
+<div class="flex justify-between my-2">
+  <div class="inline-flex">
+    @for (modeOption of modeButtonGroupOptions; track modeOption.value) {
+      <button
+        class="border border-inz-border px-inz-3 py-inz-2 font-medium text-inz-foreground transition-colors hover:bg-inz-muted hover:text-inz-foreground focus:z-inz-sticky focus:ring-2 focus:ring-inz-primary focus:ring-offset-2 focus:ring-offset-inz-background focus:outline-none disabled:pointer-events-auto disabled:opacity-50"
+        [class.-ml-px]="!modeOption.isFirst"
+        [class.rounded-l-inz-sm]="modeOption.isFirst"
+        [class.rounded-r-inz-sm]="modeOption.isLast"
+        [class.bg-inz-secondary]="mode() === modeOption.value"
+        [class.text-inz-primary-foreground]="mode() === modeOption.value"
+        (click)="setMode(modeOption.key)">
+        {{ modeOption.label }}
+      </button>
+    }
+  </div>
+
+  <inz-app-dark-rtl-buttons-group/>
+</div>
+
+<inz-app-component-showcase-container>
+  <div class="flex">
+    <inz-hyperui-side-menu
+      [mode]="mode()"
+      [items]="SideMenuItems"
+      [logo]="SideMenuLogo"
+      [profile]="SideMenuProfile"
+      [footerItems]="SideMenuFooterItems"
+      [class.dark]="showcaseContainerService.isDarkModeOn()"
+    />
+  </div>
+</inz-app-component-showcase-container>

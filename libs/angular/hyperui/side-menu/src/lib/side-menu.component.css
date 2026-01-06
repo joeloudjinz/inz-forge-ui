@@ -1,0 +1,68 @@
+:host {
+  --side-menu-bg: #ffffff;
+  --side-menu-border: #e2e8f0;
+  --side-menu-hover-bg: #f7fafc;
+  --side-menu-text-primary: #1a202c;
+  --side-menu-text-secondary: #4a5568;
+  --side-menu-text-hover: #2d3748;
+}
+
+:host(.dark) {
+  --side-menu-bg: #1a202c;
+  --side-menu-border: #4a5568;
+  --side-menu-hover-bg: #2d3748;
+  --side-menu-text-primary: #e2e8f0;
+  --side-menu-text-secondary: #cbd5e0;
+  --side-menu-text-hover: #e2e8f0;
+}
+
+.side-menu-root {
+  background-color: var(--side-menu-bg);
+  border-right-color: var(--side-menu-border);
+}
+
+:host ::ng-deep .side-menu-border-top {
+  border-top-color: var(--side-menu-border);
+}
+:host ::ng-deep .side-menu-border-bottom {
+  border-bottom-color: var(--side-menu-border);
+}
+
+:host ::ng-deep .side-menu-text-main {
+  color: var(--side-menu-text-primary);
+}
+:host ::ng-deep .side-menu-text-sub {
+  color: var(--side-menu-text-secondary);
+}
+
+:host ::ng-deep .side-menu-panel {
+  background-color: var(--side-menu-hover-bg);
+  color: var(--side-menu-text-secondary);
+}
+
+:host ::ng-deep .side-menu-item {
+  color: var(--side-menu-text-secondary);
+}
+:host ::ng-deep .side-menu-item:hover,
+:host ::ng-deep .side-menu-item.active-link {
+  background-color: var(--side-menu-hover-bg);
+  color: var(--side-menu-text-hover);
+}
+
+:host ::ng-deep .side-menu-item i,
+:host ::ng-deep .side-menu-item svg {
+  opacity: 0.75;
+}
+:host ::ng-deep .side-menu-item:hover i,
+:host ::ng-deep .side-menu-item:hover svg {
+  opacity: 1;
+}
+
+:host ::ng-deep .side-menu-badge {
+  background-color: var(--side-menu-hover-bg);
+  color: var(--side-menu-text-secondary);
+}
+:host ::ng-deep .side-menu-item:hover .side-menu-badge {
+  background-color: var(--side-menu-bg);
+  color: var(--side-menu-text-primary);
+}

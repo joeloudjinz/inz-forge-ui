@@ -21,7 +21,8 @@
           }
         ],
         "styles": [
-          "apps/angular-inzforge/src/styles.css"
+          "apps/angular-inzforge/src/styles.css",
+          "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
         ]
       },
       "configurations": {
