@@ -1,7 +1,7 @@
-import { TestBed } from '@angular/core/testing';
-import { InzForgeHyperUiSideMenuManager } from '../src/lib/services/side-menu-manager.service';
-import { InzForgeHyperUiSideMenuModes } from '../src/lib/models/side-menu-modes.enum';
-import { InzForgeHyperUiSideMenuItem } from '../src/lib/models/side-menu.models';
+import {TestBed} from '@angular/core/testing';
+import {InzForgeHyperUiSideMenuManager} from '../src/lib/services/side-menu-manager.service';
+import {InzForgeHyperUiSideMenuModes} from '../src/lib/models/side-menu-modes.enum';
+import {InzForgeHyperUiSideMenuItem} from '../src/lib/models/side-menu.models';
 
 describe('InzForgeHyperUiSideMenuManager', () => {
   let service: InzForgeHyperUiSideMenuManager;
@@ -19,7 +19,7 @@ describe('InzForgeHyperUiSideMenuManager', () => {
   });
 
   it('should update state via update() method', () => {
-    const mockItems: InzForgeHyperUiSideMenuItem[] = [{ label: 'Dashboard' }];
+    const mockItems: InzForgeHyperUiSideMenuItem[] = [{label: 'Dashboard'}];
 
     service.update({
       mode: InzForgeHyperUiSideMenuModes.compact,
@@ -32,13 +32,12 @@ describe('InzForgeHyperUiSideMenuManager', () => {
   });
 
   it('should partial update without resetting other values', () => {
-    // 1. Set initial state
-    service.update({ mode: InzForgeHyperUiSideMenuModes.compact });
+    service.update({mode: InzForgeHyperUiSideMenuModes.compact});
     expect(service.isCompact()).toBe(true);
 
-    // 2. Update only items (mode should stay compact)
-    const mockItems: InzForgeHyperUiSideMenuItem[] = [{ label: 'Settings' }];
-    service.update({ items: mockItems });
+    // Update only items (mode should stay compact)
+    const mockItems: InzForgeHyperUiSideMenuItem[] = [{label: 'Settings'}];
+    service.update({items: mockItems});
 
     expect(service.items()).toEqual(mockItems);
     expect(service.isCompact()).toBe(true); // Should still be compact

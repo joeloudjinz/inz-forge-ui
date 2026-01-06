@@ -8,7 +8,6 @@ import { By } from '@angular/platform-browser';
 describe('InzSideMenuLinkComponent', () => {
   let fixture: ComponentFixture<InzSideMenuLinkComponent>;
 
-  // Mock Manager to control 'isCompact' signal manually
   const mockManager = {
     isCompact: signal(false)
   };
@@ -24,14 +23,11 @@ describe('InzSideMenuLinkComponent', () => {
       imports: [InzSideMenuLinkComponent],
       providers: [
         provideRouter([]),
-        // Override the service with our mock
         { provide: InzForgeHyperUiSideMenuManager, useValue: mockManager }
       ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(InzSideMenuLinkComponent);
-
-    // Reset mock signal
     mockManager.isCompact.set(false);
   });
 
@@ -42,19 +38,31 @@ describe('InzSideMenuLinkComponent', () => {
     const linkText = fixture.debugElement.query(By.css('span.font-medium'));
     expect(linkText.nativeElement.textContent).toContain('Test Link');
 
-    // Ensure tooltip is NOT visible/rendered in standard logic
     const tooltip = fixture.debugElement.query(By.css('.invisible.absolute'));
     expect(tooltip).toBeFalsy();
   });
 
-  it('should render tooltip structure in compact mode', () => {
-    // Switch mock to compact
-    mockManager.isCompact.set(true);
+  it('should render iconHtml when provided', () => {
+    // Use safe HTML (like <b>) to avoid Angular Sanitizer warnings in test logs.
+    const safeHtml = '<b class="custom-icon">Icon</b>';
+    const htmlItem = { ...testItem, iconHtml: safeHtml, iconClass: undefined };
 
+    fixture.componentRef.setInput('item', htmlItem);
+    fixture.detectChanges();
+
+    // [innerHTML] is a property, not an attribute.
+    // Target the class 'shrink-0' which 'iconClasses()' applies to this span.
+    const iconSpan = fixture.debugElement.query(By.css('span.shrink-0'));
+
+    expect(iconSpan).toBeTruthy();
+    expect(iconSpan.nativeElement.innerHTML).toContain('custom-icon');
+  });
+
+  it('should render tooltip structure in compact mode', () => {
+    mockManager.isCompact.set(true);
     fixture.componentRef.setInput('item', testItem);
     fixture.detectChanges();
 
-    // In compact mode, the text is hidden inside a tooltip-like span
     const tooltip = fixture.debugElement.query(By.css('.invisible.absolute'));
     expect(tooltip).toBeTruthy();
     expect(tooltip.nativeElement.textContent).toContain('Test Link');
@@ -65,8 +73,6 @@ describe('InzSideMenuLinkComponent', () => {
     fixture.detectChanges();
 
     const anchor = fixture.debugElement.query(By.css('a'));
-    // We check if routerLinkActive binding exists (Angular handles the class application based on URL)
-    // Since we are not navigating, we just check the attribute is present
     expect(anchor.attributes['routerLinkActive']).toBe('active-link');
   });
 });

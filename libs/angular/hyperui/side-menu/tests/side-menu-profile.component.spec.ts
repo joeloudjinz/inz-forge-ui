@@ -41,8 +41,8 @@ describe('InzSideMenuProfileComponent', () => {
     // Check Image
     const img = fixture.debugElement.query(By.css('img'));
 
-    // FIX: [ngSrc] is processed by the directive into a standard 'src' attribute.
-    // We verify 'src' exists and contains our image path.
+    // [ngSrc] is processed by the directive into a standard 'src' attribute.
+    // Verify 'src' exists and contains our image path.
     expect(img.attributes['src']).toContain('assets/jane.jpg');
     expect(img.attributes['alt']).toBe('Jane Doe');
 

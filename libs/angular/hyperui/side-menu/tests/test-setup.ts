@@ -1,5 +1,5 @@
 import '@analogjs/vitest-angular/setup-snapshots';
-import { setupTestBed } from '@analogjs/vitest-angular/setup-testbed';
+import {setupTestBed} from '@analogjs/vitest-angular/setup-testbed';
 
 /**
  * Initialize the Angular testing environment.
