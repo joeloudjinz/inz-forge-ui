@@ -9,9 +9,11 @@ import { InzForgeHyperUiSideMenuManager } from '../../services/side-menu-manager
   standalone: true,
   imports: [CommonModule, RouterModule, NgOptimizedImage],
   template: `
-    <div class="sticky inset-x-0 bottom-0 border-t border-gray-100 bg-white" [class.p-2]="manager.isCompact()">
+    <div class="sticky inset-x-0 bottom-0 border-t side-menu-border-top side-menu-root"
+         [class.p-2]="manager.isCompact()">
+
       <a [routerLink]="profile().profileRoute || []"
-         class="flex items-center gap-2 hover:bg-gray-50 transition-colors"
+         class="flex items-center gap-2 side-menu-item transition-colors"
          [class]="linkClasses()">
 
         <img [ngSrc]="profile().avatarUrl" [alt]="profile().headline" class="rounded-full object-cover" width="40"
@@ -20,9 +22,9 @@ import { InzForgeHyperUiSideMenuManager } from '../../services/side-menu-manager
         @if (!manager.isCompact()) {
           <div>
             <p class="text-xs">
-              <strong class="block font-medium text-gray-900">{{ profile().headline }}</strong>
+              <strong class="block font-medium side-menu-text-main">{{ profile().headline }}</strong>
               @if (!!profile().subtitle) {
-                <span class="text-gray-500"> {{ profile().subtitle }} </span>
+                <span class="side-menu-text-sub"> {{ profile().subtitle }} </span>
               }
             </p>
           </div>

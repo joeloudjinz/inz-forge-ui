@@ -9,14 +9,14 @@ import { InzForgeHyperUiSideMenuManager } from '../../services/side-menu-manager
   standalone: true,
   imports: [CommonModule, InzSideMenuLinkComponent],
   template: `
-    <!-- Standard Mode: Accordion -->
     @if (!manager.isCompact()) {
       <details class="group [&_summary::-webkit-details-marker]:hidden" [open]="item().isExpandedByDefault">
         <summary
-          class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+          class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 side-menu-item">
+
           <div class="flex items-center gap-2">
             @if (item().iconClass) {
-              <i [class]="item().iconClass + ' size-5 opacity-75'"></i>
+              <i [class]="item().iconClass + ' size-5'"></i>
             }
             <span class="text-sm font-medium"> {{ item().label }} </span>
           </div>
@@ -39,18 +39,15 @@ import { InzForgeHyperUiSideMenuManager } from '../../services/side-menu-manager
         </ul>
       </details>
     } @else {
-      <!-- Compact Mode: Flattened Children -->
       @for (subItem of item().children; track $index) {
         <inz-side-menu-link [item]="subItem"/>
       }
     }
   `,
-  styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 export class InzSideMenuGroupComponent {
   protected readonly manager = inject(InzForgeHyperUiSideMenuManager);
-
   item = input.required<InzForgeHyperUiSideMenuItem>();
 }

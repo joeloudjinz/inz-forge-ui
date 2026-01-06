@@ -14,7 +14,7 @@ import { InzForgeHyperUiSideMenuManager } from '../../services/side-menu-manager
       [routerLink]="item().route"
       [href]="item().href"
       [class]="linkClasses()"
-      routerLinkActive="bg-gray-100 text-gray-700">
+      routerLinkActive="active-link">
 
       <!-- Icon -->
       @if (item().iconHtml) {
@@ -23,24 +23,24 @@ import { InzForgeHyperUiSideMenuManager } from '../../services/side-menu-manager
         <i [class]="cn(iconClasses(), item().iconClass)"></i>
       }
 
-      <!-- Text Logic -->
+      <!-- Text -->
       @if (manager.isCompact()) {
-        <span class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible z-50 whitespace-nowrap">
+        <!-- Tooltip uses manual Tailwind colors because it's an overlay element -->
+        <span class="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible z-50 whitespace-nowrap dark:bg-gray-700">
           {{ item().label }}
         </span>
       } @else {
         <span class="text-sm font-medium"> {{ item().label }} </span>
       }
 
-      <!-- Badge (Standard Mode Only) -->
+      <!-- Badge -->
       @if (!manager.isCompact() && item().badge) {
-        <span class="ml-auto shrink-0 rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600 group-hover:bg-gray-200">
+        <span class="ml-auto shrink-0 rounded-full px-2 py-0.5 text-xs side-menu-badge">
           {{ item().badge }}
         </span>
       }
     </a>
   `,
-  styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
@@ -51,17 +51,16 @@ export class InzSideMenuLinkComponent {
   item = input.required<InzForgeHyperUiSideMenuItem>();
 
   protected readonly linkClasses = computed(() => {
-    const base = 'group relative flex items-center rounded-lg transition-colors';
+    const base = 'group relative flex items-center rounded-lg transition-colors side-menu-item';
 
     if (this.manager.isCompact()) {
-      return cn(base, 'justify-center px-2 py-1.5 text-gray-500 hover:bg-gray-50 hover:text-gray-700');
+      return cn(base, 'justify-center px-2 py-1.5');
     }
 
-    return cn(base, 'px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 gap-2');
+    return cn(base, 'px-4 py-2 gap-2');
   });
 
   protected readonly iconClasses = computed(() => {
-    const base = 'shrink-0 opacity-75';
-    return cn(base, 'size-5');
+    return cn('shrink-0 size-5');
   });
 }

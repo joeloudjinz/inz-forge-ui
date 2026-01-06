@@ -2,13 +2,13 @@ import {ChangeDetectionStrategy, Component, computed, effect, inject, input, Vie
 import {CommonModule} from '@angular/common';
 import {cn} from '@inz-forge-ui/utils';
 import {InzSideMenuGroupComponent, InzSideMenuLinkComponent, InzSideMenuProfileComponent} from './components';
-import {InzForgeHyperUiSideMenuModes} from './models/side-menu-modes.enum';
 import {InzForgeHyperUiSideMenuManager} from "./services/side-menu-manager.service";
 import {
   InzForgeHyperUiSideMenuItem,
   InzForgeHyperUiSideMenuLogo,
+  InzForgeHyperUiSideMenuModes,
   InzForgeHyperUiSideMenuProfile
-} from './models/side-menu.models';
+} from './models';
 
 @Component({
   selector: 'inz-hyperui-side-menu',
@@ -31,9 +31,11 @@ export class InzForgeHyperUiSideMenuComponent {
   logo = input<InzForgeHyperUiSideMenuLogo>();
   profile = input<InzForgeHyperUiSideMenuProfile>();
   footerItems = input<InzForgeHyperUiSideMenuItem[] | undefined>([]);
+
   protected readonly manager = inject(InzForgeHyperUiSideMenuManager);
+
   protected readonly containerClasses = computed(() => {
-    const base = 'flex h-screen flex-col justify-between border-e border-gray-100 bg-white transition-all duration-300';
+    const base = 'flex h-screen flex-col justify-between border-e side-menu-root transition-all duration-300';
     return this.manager.isCompact()
       ? cn(base, 'w-16')
       : cn(base, 'w-64');
