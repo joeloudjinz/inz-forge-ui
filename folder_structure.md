@@ -1,5 +1,5 @@
 ## Project Folder Structure
-Generated on: Thu Jan  8 10:54:10 CET 2026
+Generated on: Thu Jan  8 16:40:25 CET 2026
 *(Respected .gitignore rules)*
 
 ```text
@@ -115,6 +115,8 @@ inz-forge-ui/
 │   │   └── my-swe-assistant-pro.md
 │   └── reports/
 │       ├── ci-pipeline-stabilization-nx-node20-esm.md
+│       ├── configuration-improvements-report.md
+│       ├── configuration-sharing-analysis.md
 │       ├── improving-test-configurations.md
 │       ├── integrating-and-configuring-test-frameworks-for-accordion-component.md
 │       └── integrating-tailwindcss-with-angular-app.md
@@ -145,8 +147,7 @@ inz-forge-ui/
 │   │       │   │   └── index.ts
 │   │       │   ├── tests/
 │   │       │   │   ├── accordion.component.cy.ts
-│   │       │   │   ├── accordion.component.spec.ts
-│   │       │   │   └── test-setup.ts
+│   │       │   │   └── accordion.component.spec.ts
 │   │       │   ├── tsconfig.cy.json
 │   │       │   ├── tsconfig.json
 │   │       │   ├── tsconfig.lib.json
@@ -191,8 +192,7 @@ inz-forge-ui/
 │   │           │   ├── side-menu-manager.service.spec.ts
 │   │           │   ├── side-menu-profile.component.spec.ts
 │   │           │   ├── side-menu.component.cy.ts
-│   │           │   ├── side-menu.component.spec.ts
-│   │           │   └── test-setup.ts
+│   │           │   └── side-menu.component.spec.ts
 │   │           ├── tsconfig.cy.json
 │   │           ├── tsconfig.json
 │   │           ├── tsconfig.lib.json
@@ -244,7 +244,17 @@ inz-forge-ui/
 ├── tailwind.config.base.js
 ├── tools/
 │   └── build-configs/
-│       └── angular/
+│       ├── angular/
+│       │   └── lib/
+│       │       ├── cypress.config.ts
+│       │       ├── eslint.config.mjs
+│       │       ├── test-setup.ts
+│       │       ├── tsconfig.base.json
+│       │       ├── tsconfig.cy.json
+│       │       ├── tsconfig.lib.json
+│       │       ├── tsconfig.spec.json
+│       │       └── vite.config.ts
+│       └── vue/
 │           └── lib/
 │               ├── cypress.config.ts
 │               ├── eslint.config.mjs
