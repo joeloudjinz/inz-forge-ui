@@ -1,11 +1,12 @@
 import {provideRouter} from '@angular/router';
 import {
-  InzForgeHyperUiSideMenuComponent,
   InzForgeHyperUiSideMenuItem,
   InzForgeHyperUiSideMenuLogo,
   InzForgeHyperUiSideMenuModes,
   InzForgeHyperUiSideMenuProfile
-} from '../src';
+} from '../src/lib/models';
+
+import {InzForgeHyperUiSideMenuComponent} from "../src/lib/side-menu.component"
 
 describe('InzForgeHyperUiSideMenuComponent', () => {
   const mockLogo: InzForgeHyperUiSideMenuLogo = {

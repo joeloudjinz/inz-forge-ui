@@ -1,16 +1,6 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../../../tools/build-configs/vue/lib/tsconfig.cy.json",
   "compilerOptions": {
-    "outDir": "../../../../dist/out-tsc",
-    "types": ["cypress", "node"],
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "bundler"
-  },
-  "include": [
-    "src/**/*.vue",
-    "src/**/*.ts",
-    "tests/**/*.cy.ts",
-    "cypress/**/*.ts",
-    "cypress/**/*.css"
-  ]
+    "outDir": "../../../../dist/out-tsc"
+  }
 }

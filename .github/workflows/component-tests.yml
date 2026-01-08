@@ -52,7 +52,7 @@ jobs:
     if: github.event_name != 'pull_request' || github.head_ref != 'dev'
 
     steps:
-      # 1. Check out the code.
+      # Check out the code.
       # 'fetch-depth: 0' is CRITICAL for Nx. It needs the full git history
       # to compare commits and determine what changed.
       - name: Checkout repository
@@ -60,29 +60,37 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 2. Setup Node.js environment
+      # Setup Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      # 3. Install NPM dependencies (Clean Install)
+      - name: Cache Cypress Binary
+        id: cache-cypress
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      # Install NPM dependencies (Clean Install)
       - name: Install dependencies
         run: npm ci
 
-      # 4. Install Cypress Binary explicitly (Required for component tests)
+      # Install Cypress Binary explicitly (Required for component tests)
       - name: Install Cypress Binary
+        if: steps.cache-cypress.outputs.cache-hit != 'true'
         run: npx cypress install
 
-      # 5. Calculate Nx SHAs (Base vs Head)
+      # Calculate Nx SHAs (Base vs Head)
       # This action automatically sets the NX_BASE and NX_HEAD environment variables.
       # - On PRs: Base = origin/main (or target branch), Head = your commit.
       # - On Push: Base = previous commit, Head = current commit.
       - name: Setup Nx SHAs
         uses: nrwl/nx-set-shas@v4
 
-      # 6. Run Affected Tests
+      # Run Affected Tests
       # This is the "Brain" of the operation.
       # --target=component-test: Runs the component-test target defined in project.json
       # --parallel=3: Runs up to 3 projects simultaneously to speed up execution.

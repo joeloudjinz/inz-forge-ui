@@ -1,11 +1,7 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../../../tools/build-configs/angular/lib/tsconfig.lib.json",
   "compilerOptions": {
-    "outDir": "../../../../dist/out-tsc",
-    "declaration": true,
-    "declarationMap": true,
-    "inlineSources": true,
-    "types": []
+    "outDir": "../../../../dist/out-tsc"
   },
   "include": [
     "src/**/*.ts"

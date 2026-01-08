@@ -1,17 +1,9 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../../../../dist/out-tsc",
-    "types": [
-      "vitest/globals",
-      "node"
-    ]
-  },
-  "files": [
-    "tests/test-setup.ts"
-  ],
+  "extends": "../../../../tools/build-configs/angular/lib/tsconfig.spec.json",
   "include": [
+    "src/**/*.ts",                // REQUIRED: Compile the components
     "tests/**/*.spec.ts",
-    "**/*.d.ts"
+    "**/*.d.ts",
+    "../../../../tools/build-configs/angular/lib/test-setup.ts" // REQUIRED: Compile the setup
   ]
 }

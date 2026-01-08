@@ -1,9 +1,16 @@
 {
-  "extends": "../../../../tools/build-configs/vue/lib/tsconfig.spec.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "../../../../dist/out-tsc"
+    "outDir": "../../../../dist/out-tsc",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": ["vite/client"]
   },
-  "include": [
+  "exclude": [
+    "src/**/__tests__/*",
+    "src/**/*.spec.vue",
+    "src/**/*.test.vue",
     "vite.config.ts",
     "vite.config.mts",
     "vitest.config.ts",
@@ -16,6 +23,7 @@
     "src/**/*.spec.js",
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx",
-    "src/**/*.d.ts"
+    "**/*.cy.ts",
+    "cypress/**/*"
   ]
 }
