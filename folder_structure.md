@@ -1,5 +1,5 @@
 ## Project Folder Structure
-Generated on: Sun Jan  4 10:49:20 CET 2026
+Generated on: Thu Jan  8 10:54:10 CET 2026
 *(Respected .gitignore rules)*
 
 ```text
@@ -35,9 +35,13 @@ inz-forge-ui/
 │   │   │   │   │   │   ├── home.component.html
 │   │   │   │   │   │   └── home.component.ts
 │   │   │   │   │   └── hyperui/
-│   │   │   │   │       └── accordion/
-│   │   │   │   │           ├── hyperui-accordion-page.component.html
-│   │   │   │   │           ├── hyperui-accordion-page.component.ts
+│   │   │   │   │       ├── accordion/
+│   │   │   │   │       │   ├── hyperui-accordion-page.component.html
+│   │   │   │   │       │   ├── hyperui-accordion-page.component.ts
+│   │   │   │   │       │   └── resources.ts
+│   │   │   │   │       └── side-menu/
+│   │   │   │   │           ├── hyperui-side-menu-page.component.html
+│   │   │   │   │           ├── hyperui-side-menu-page.component.ts
 │   │   │   │   │           └── resources.ts
 │   │   │   │   ├── services/
 │   │   │   │   │   └── theme.service.ts
@@ -111,6 +115,7 @@ inz-forge-ui/
 │   │   └── my-swe-assistant-pro.md
 │   └── reports/
 │       ├── ci-pipeline-stabilization-nx-node20-esm.md
+│       ├── improving-test-configurations.md
 │       ├── integrating-and-configuring-test-frameworks-for-accordion-component.md
 │       └── integrating-tailwindcss-with-angular-app.md
 ├── eslint.config.mjs
@@ -119,7 +124,35 @@ inz-forge-ui/
 │   ├── angular/
 │   │   └── hyperui/
 │   │       ├── README.md
-│   │       └── accordion/
+│   │       ├── accordion/
+│   │       │   ├── README.md
+│   │       │   ├── cypress/
+│   │       │   │   ├── screenshots/
+│   │       │   │   └── support/
+│   │       │   │       ├── commands.ts
+│   │       │   │       ├── component-index.html
+│   │       │   │       └── component.ts
+│   │       │   ├── cypress.config.ts
+│   │       │   ├── eslint.config.mjs
+│   │       │   ├── project.json
+│   │       │   ├── src/
+│   │       │   │   ├── Source.md
+│   │       │   │   ├── accordion-item.model.ts
+│   │       │   │   ├── accordion-modes.enum.ts
+│   │       │   │   ├── accordion.component.css
+│   │       │   │   ├── accordion.component.html
+│   │       │   │   ├── accordion.component.ts
+│   │       │   │   └── index.ts
+│   │       │   ├── tests/
+│   │       │   │   ├── accordion.component.cy.ts
+│   │       │   │   ├── accordion.component.spec.ts
+│   │       │   │   └── test-setup.ts
+│   │       │   ├── tsconfig.cy.json
+│   │       │   ├── tsconfig.json
+│   │       │   ├── tsconfig.lib.json
+│   │       │   ├── tsconfig.spec.json
+│   │       │   └── vite.config.ts
+│   │       └── side-menu/
 │   │           ├── README.md
 │   │           ├── cypress/
 │   │           │   ├── screenshots/
@@ -132,15 +165,33 @@ inz-forge-ui/
 │   │           ├── project.json
 │   │           ├── src/
 │   │           │   ├── Source.md
-│   │           │   ├── accordion-item.model.ts
-│   │           │   ├── accordion-modes.enum.ts
-│   │           │   ├── accordion.component.css
-│   │           │   ├── accordion.component.html
-│   │           │   ├── accordion.component.ts
-│   │           │   └── index.ts
+│   │           │   ├── index.ts
+│   │           │   └── lib/
+│   │           │       ├── components/
+│   │           │       │   ├── index.ts
+│   │           │       │   ├── side-menu-group/
+│   │           │       │   │   └── side-menu-group.component.ts
+│   │           │       │   ├── side-menu-link/
+│   │           │       │   │   └── side-menu-link.component.ts
+│   │           │       │   └── side-menu-profile/
+│   │           │       │       └── side-menu-profile.component.ts
+│   │           │       ├── models/
+│   │           │       │   ├── index.ts
+│   │           │       │   ├── inz-forge-hyper-ui-side-menu.config.ts
+│   │           │       │   ├── side-menu-modes.enum.ts
+│   │           │       │   └── side-menu.models.ts
+│   │           │       ├── services/
+│   │           │       │   └── side-menu-manager.service.ts
+│   │           │       ├── side-menu.component.css
+│   │           │       ├── side-menu.component.html
+│   │           │       └── side-menu.component.ts
 │   │           ├── tests/
-│   │           │   ├── accordion.component.cy.ts
-│   │           │   ├── accordion.component.spec.ts
+│   │           │   ├── side-menu-group.component.spec.ts
+│   │           │   ├── side-menu-link.component.spec.ts
+│   │           │   ├── side-menu-manager.service.spec.ts
+│   │           │   ├── side-menu-profile.component.spec.ts
+│   │           │   ├── side-menu.component.cy.ts
+│   │           │   ├── side-menu.component.spec.ts
 │   │           │   └── test-setup.ts
 │   │           ├── tsconfig.cy.json
 │   │           ├── tsconfig.json
@@ -161,6 +212,7 @@ inz-forge-ui/
 │   │       └── tsconfig.lib.json
 │   └── vue/
 │       └── hyperui/
+│           ├── README.md
 │           └── accordion/
 │               ├── README.md
 │               ├── cypress/
@@ -180,7 +232,7 @@ inz-forge-ui/
 │               │   └── vue-shims.d.ts
 │               ├── tests/
 │               │   ├── accordion.component.cy.ts
-│               │   └── accordion.spec.ts
+│               │   └── accordion.component.spec.ts
 │               ├── tsconfig.cy.json
 │               ├── tsconfig.json
 │               ├── tsconfig.lib.json
@@ -190,6 +242,17 @@ inz-forge-ui/
 ├── package-lock.json
 ├── package.json
 ├── tailwind.config.base.js
+├── tools/
+│   └── build-configs/
+│       └── angular/
+│           └── lib/
+│               ├── cypress.config.ts
+│               ├── eslint.config.mjs
+│               ├── tsconfig.base.json
+│               ├── tsconfig.cy.json
+│               ├── tsconfig.lib.json
+│               ├── tsconfig.spec.json
+│               └── vite.config.ts
 ├── tsconfig.base.json
 └── vitest.workspace.ts
 ```

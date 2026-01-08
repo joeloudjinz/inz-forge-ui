@@ -1,14 +1,7 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../../../tools/build-configs/angular/lib/tsconfig.cy.json",
   "compilerOptions": {
-    "outDir": "../../../../dist/out-tsc",
-    "types": [
-      "cypress",
-      "node",
-      "cypress-real-events"
-    ],
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "bundler"
+    "outDir": "../../../../dist/out-tsc"
   },
   "include": [
     "tests/**/*.cy.ts",
