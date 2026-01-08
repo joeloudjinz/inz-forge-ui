@@ -1,14 +1,7 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../../../tools/build-configs/vue/lib/tsconfig.spec.json",
   "compilerOptions": {
-    "outDir": "../../../../dist/out-tsc",
-    "types": [
-      "vitest/globals",
-      "vitest/importMeta",
-      "vite/client",
-      "node",
-      "vitest"
-    ]
+    "outDir": "../../../../dist/out-tsc"
   },
   "include": [
     "vite.config.ts",

@@ -1,4 +1,4 @@
-import {InzForgeHyperUiAccordionComponent} from '../src';
+import { InzForgeHyperUiAccordionComponent } from '../src/accordion.component';
 
 const mockItems = [
   {title: 'Item 1', description: 'Desc 1'},

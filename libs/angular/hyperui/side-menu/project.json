@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "ng-hyperui-side-menu",
+  "projectType": "library",
+  "sourceRoot": "libs/angular/hyperui/side-menu/src",
+  "prefix": "inz",
+  "targets": {
+    "test": {
+      "executor": "@analogjs/vitest-angular:test"
+    },
+    "lint": {},
+    "component-test": {
+      "options": {
+        "cypressConfig": "libs/angular/hyperui/side-menu/cypress.config.ts"
+      }
+    }
+  }
+}

@@ -1,28 +1,10 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "bundler",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2020", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@inz-forge-ui/utils": ["libs/shared/utils/src/index.ts"],
-      "@inz-forge-ui/angular/hyperui/accordion": [
-        "libs/angular/hyperui/accordion/src/index.ts"
-      ],
-      "@inz-forge-ui/vue/hyperui/accordion": [
-        "libs/vue/hyperui/accordion/src/index.ts"
-      ]
+      "@inz-forge-ui/angular/*": ["libs/angular/*"],
+      "@inz-forge-ui/vue/*": ["libs/vue/*"]
     }
-  },
-  "exclude": ["node_modules", "tmp"]
+  }
 }
