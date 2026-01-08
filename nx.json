@@ -1,13 +1,13 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
-    "test": {
-      "executor": "@analogjs/vitest-angular:test",
+    "@analogjs/vitest-angular:test": {
       "cache": true,
-      "inputs": [
-        "default",
-        "{workspaceRoot}/vitest.workspace.ts"
-      ]
+      "inputs": ["default", "{workspaceRoot}/vitest.workspace.ts"]
+    },
+    "@nx/vite:test": {
+      "cache": true,
+      "inputs": ["default", "{workspaceRoot}/vitest.workspace.ts"]
     },
     "component-test": {
       "executor": "@nx/cypress:cypress",
@@ -22,7 +22,8 @@
       "options": {
         "lintFilePatterns": [
           "{projectRoot}/**/*.ts",
-          "{projectRoot}/**/*.html"
+          "{projectRoot}/**/*.html",
+          "{projectRoot}/**/*.vue"
         ]
       }
     }

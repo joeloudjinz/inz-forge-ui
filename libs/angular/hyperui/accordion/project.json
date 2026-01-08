@@ -1,13 +1,18 @@
 {
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "name": "ng-hyperui-accordion",
   "projectType": "library",
   "sourceRoot": "libs/angular/hyperui/accordion/src",
   "prefix": "inz",
   "targets": {
-    "test": {},
+    "test": {
+      "executor": "@analogjs/vitest-angular:test"
+    },
     "lint": {},
     "component-test": {
-      "options": { "cypressConfig": "libs/angular/hyperui/accordion/cypress.config.ts" }
+      "options": {
+        "cypressConfig": "libs/angular/hyperui/accordion/cypress.config.ts"
+      }
     }
   }
 }
