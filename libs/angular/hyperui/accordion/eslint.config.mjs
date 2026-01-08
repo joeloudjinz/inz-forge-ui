@@ -4,4 +4,10 @@ import { angularLibEslintConfig } from '../../../../tools/build-configs/angular/
 export default [
   ...baseConfig,
   ...angularLibEslintConfig,
+  {
+    files: ['**/*.ts'],
+    rules: {
+      // Library-specific overrides only
+    },
+  },
 ];

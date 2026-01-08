@@ -1,10 +1,8 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {
-  InzForgeHyperUiAccordionComponent,
-  InzForgeHyperUiAccordionItemModel,
-  InzForgeHyperUiAccordionModes
-} from '../src';
 import {vi} from 'vitest';
+import {InzForgeHyperUiAccordionComponent} from '../src/accordion.component';
+import {InzForgeHyperUiAccordionModes} from '../src/accordion-modes.enum';
+import {InzForgeHyperUiAccordionItemModel} from '../src/accordion-item.model';
 
 describe('InzForgeHyperUiAccordionComponent', () => {
   let component: InzForgeHyperUiAccordionComponent;

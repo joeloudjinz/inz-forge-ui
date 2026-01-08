@@ -1,11 +1,7 @@
 {
   "extends": "../../../../tools/build-configs/angular/lib/tsconfig.cy.json",
-  "compilerOptions": {
-    "outDir": "../../../../dist/out-tsc"
-  },
   "include": [
     "tests/**/*.cy.ts",
-    "cypress.config.ts",
     "cypress/**/*.ts",
     "**/*.d.ts"
   ]
