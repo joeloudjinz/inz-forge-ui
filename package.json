@@ -60,6 +60,7 @@
     "ajv": "^8.0.0",
     "angular-eslint": "^21.0.1",
     "autoprefixer": "^10.4.23",
+    "cypress": "^15.8.2",
     "cypress-real-events": "^1.15.0",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",

@@ -1,42 +1,33 @@
+// tools/build-configs/angular/lib/cypress.config.ts
 import { defineConfig } from 'cypress';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import angular from '@analogjs/vite-plugin-angular';
+import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { resolve } from 'path';
-import type { UserConfig } from 'vite';
 
 export function getAngularLibCypressConfig(dirname: string) {
-  // STRATEGY: Define Vite config with strict typing outside the conflict zone
-  const viteConfig: UserConfig = {
-    root: dirname,
-    plugins: [
-      angular({
-        tsconfig: resolve(dirname, 'tsconfig.cy.json'),
-      }),
-      nxViteTsPaths(),
-    ],
-    // PERFORMANCE FIX: Pre-bundle Angular core to prevent runtime reloading
-    optimizeDeps: {
-      include: [
-        '@angular/core',
-        '@angular/common',
-        '@angular/compiler',
-        '@angular/platform-browser',
-        '@angular/platform-browser-dynamic',
-        'rxjs',
-      ],
-    },
-  };
-
   return defineConfig({
     component: {
       devServer: {
         framework: 'angular',
         bundler: 'vite',
-        viteConfig,
-      } as any, // Cast required: Cypress types do not yet support Angular + Vite combo
+        // Pass the Vite config object directly here
+        viteConfig: {
+          root: dirname,
+          plugins: [
+            angular({
+              tsconfig: resolve(dirname, 'tsconfig.cy.json'),
+            }),
+            nxViteTsPaths(),
+          ],
+          server: {
+            fs: {
+              // Allow access to workspace root for shared configs/assets
+              allow: [resolve(dirname, '../../../../')],
+            },
+          },
+        },
+      } as any, // Cast to any is still required due to a known Cypress/Angular type mismatch
       specPattern: '**/*.cy.ts',
-      video: false,
-      screenshotOnRunFailure: true,
     },
   });
 }
