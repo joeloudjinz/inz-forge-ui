@@ -1,0 +1,10 @@
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "types": ["vite/client", "node"]
+  }
+}

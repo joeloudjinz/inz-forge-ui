@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["cypress", "node"],
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src/**/*.vue",
+    "src/**/*.ts",
+    "tests/**/*.cy.ts",
+    "cypress/**/*.ts",
+    "cypress/**/*.css"
+  ]
+}
